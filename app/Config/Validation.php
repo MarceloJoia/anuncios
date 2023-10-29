@@ -43,16 +43,47 @@ class Validation extends BaseConfig
     // Categories
     // --------------------------------------------------------------------
     public array $category = [
-        'id'       => 'permit_empty|is_natural_no_zero',
-        'name'     => 'required|min_length[3]|max_length[97]|is_unique[categories.name,id,{id}]',
+        'id'            => 'permit_empty|is_natural_no_zero',
+        'name'          => 'required|min_length[3]|max_length[97]|is_unique[categories.name,id,{id}]',
     ];
 
     public array $category_errors = [
         'name' => [
-            'required' => 'Categories.name.required',
-            'min_length' => 'Categories.name.min_length',
-            'max_length' => 'Categories.name.max_length',
-            'is_unique' => 'Categories.name.is_unique',
+            'required'      => 'Categories.name.required',
+            'min_length'    => 'Categories.name.min_length',
+            'max_length'    => 'Categories.name.max_length',
+            'is_unique'     => 'Categories.name.is_unique',
         ],
+    ];
+
+
+    //--------------------------------------------------------------------
+    // Plans
+    //--------------------------------------------------------------------
+    public $plan = [
+        'id'            => 'permit_empty|is_natural_no_zero',
+        'name'              => 'required|min_length[3]|max_length[99]|is_unique[plans.name,id,{id}]',
+        'recorrence'        => 'required|in_list[monthly,quarterly,semester,yearly]',
+        'value'             => 'required',
+        'description'       => 'required',
+    ];
+
+    public $plan_errors = [
+        'name' => [
+            'required'      => 'Plans.name.required',
+            'min_length'    => 'Plans.name.min_length',
+            'max_length'    => 'Plans.name.max_length',
+            'is_unique'     => 'Plans.name.is_unique',
+        ],
+        'recorrence' => [
+            'in_list'       => 'Plans.recorrence.in_list', // lang() não pode ser colocado aqui... dará erro de sintaxe
+        ],
+        'value' => [
+            'required'      => 'Plans.value.required',
+        ],
+        'description' => [
+            'required'      => 'Plans.description.required',
+        ],
+
     ];
 }

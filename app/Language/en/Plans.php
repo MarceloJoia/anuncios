@@ -31,7 +31,18 @@ return [
     'label_archived' => 'Archived',
 
     // Validation messages
+    'name' => [
+        'required'           => 'Enter the plan name.',
+        'min_length'         => 'The name must be at least 3 characters long',
+        'max_length'         => 'The Name must have a maximum of 97 characters.',
+        'is_unique'          => 'This Plan already exists',
+    ],
     'recorrence'        => [
         'in_list' => 'Please choose one of the options: Monthly, Quarterly, Semiannual or Annual',
+    ],'value' => [
+        'required'           => 'Enter the plan value.',
+    ],
+    'description' => [
+        'required'      => 'The Plan needs a description.',
     ],
 ];

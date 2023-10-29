@@ -1,9 +1,9 @@
 <script>
-    $('#categories-form').submit(function(e) {
+    $('#plans-form').submit(function(e) {
 
         e.preventDefault();
 
-        var form = this; // Pego esse formulério
+        var form = this;
 
         $.ajax({
 
@@ -13,13 +13,10 @@
             processData: false,
             dataType: 'JSON',
             contentType: false,
-
             beforeSend: function() {
 
-                // Limpa os erros da requisição anterior
                 $(form).find('span.error-text').text('');
             },
-
             success: function(response) {
 
                 window.refreshCSRFToken(response.token);
@@ -27,33 +24,44 @@
                 if (response.success == false) {
 
                     // Erro
-                    toastr.error('Verifique os erros e tente novamente');
+                    toastr.error('<?php echo lang('App.danger_validations'); ?>');
 
                     $.each(response.errors, function(field, value) {
+
                         console.log(field);
+
                         $(form).find('span.' + field).text(value);
+
                     });
 
                     return;
                 }
 
-                // Mensagem de sucesso
+
+                // Tudo certo.
+
+                // Display a success toast, with a title
                 toastr.success(response.message);
 
-                //* Mostrar mensage de sucesso com toaster
-                $('#categoryModal').modal('hide'); // Esconder a modal
-                $(form)[0].reset(); // Ressetar os campos do formulário
-                $("#dataTable").DataTable().ajax.reload(null, false); // Atualizar a tabela do Ajax Request
-                $('.modal-title').text('Criar categoria'); // mudaremos o titulo para Criar
-                $(form).attr('action', '<?php echo route_to('categories.create'); ?>'); // Retornar a rota para Criate
-                $(form).find('input[name="id"]').val(''); // Limpara o ID do Input
-                $('input[name="_method"]').remove(); // Removo o metodo Spoof
+                $('#modalPlan').modal('hide');
+
+                $(form)[0].reset();
+
+
+                $("#dataTable").DataTable().ajax.reload(null, false);
+
+                $('.modal-title').text('<?php echo lang('Plans.title_new'); ?>'); // mudaremos depois com o lang
+
+                $(form).attr('action', '<?php echo route_to('plans.create'); ?>');
+                $(form).find('input[name="id"]').val('');
+                $('input[name="_method"]').remove();
             },
 
             error: function() {
+
                 alert('Error backend');
             }
-
         });
+
     });
 </script>

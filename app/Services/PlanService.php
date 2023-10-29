@@ -90,4 +90,37 @@ class PlanService
 
         // return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
     }
+
+    public function trySavePlan(Plan $plan, bool $protect = true)
+    {
+        try {
+            // $this->createOrUpdatePlanOnGerencianet($plan);
+            if ($plan->hasChanged()) {
+                $this->planModel->protect($protect)->save($plan);
+            }
+        } catch (\Exception $e) {
+
+            die($e->getMessage());
+        }
+    }
+
+    // private function createOrUpdatePlanOnGerencianet(Plan $plan)
+    // {
+    //     // Estamos criando um plano?
+    //     if (empty($plan->id)) {
+
+    //         // Sim.. criamos o plano na gerencianet
+
+    //         return $this->gerencianetService->createPlan($plan);
+    //     }
+
+    //     // Estamos atualizando....
+    //     // Contudo, precisamo verificar se o nome do plano foi alterado.
+    //     // a Gerencianet permite atualizar apenas o nome do plano.
+    //     if ($plan->hasChanged('name')) {
+
+    //         return $this->gerencianetService->updatePlan($plan);
+    //     }
+    // }
+
 }

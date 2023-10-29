@@ -39,7 +39,20 @@ return [
     'label_archived'        => 'Arquivado',
 
     // Validation messages
-    'recorrence'        => [
-        'in_list' => 'Por favor escolha uma das opções: Mensal, Trimestral, Semestral ou Anual',
+    'name' => [
+        'required'           => 'Digite o nome do plano.',
+        'min_length'         => 'O Nome precisa de pelo menos 3 caractéres',
+        'max_length'         => 'O Nome deve ter 97 caractéres no máximo.',
+        'is_unique'          => 'Essa Plano já existe',
     ],
+    'recorrence' => [
+        'in_list'            => 'Por favor escolha uma das opções: Mensal, Trimestral, Semestral ou Anual',
+    ],
+    'value' => [
+        'required'           => 'Digite o valor do plano',
+    ],
+    'description' => [
+        'required'      => 'O Plano precisa de uma descrição.',
+    ],
+
 ];

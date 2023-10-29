@@ -31,7 +31,19 @@ return [
     'label_archived' => 'Archivado',
 
     // Validation messages
+    'name' => [
+        'required'           => 'Ingrese el nombre del plan.',
+        'min_length'         => 'El nombre debe tener al menos 3 caracteres.',
+        'max_length'         => 'El Nombre debe tener un máximo de 97 caracteres.',
+        'is_unique'          => 'Este Plan ya existe',
+    ],
     'recorrence'        => [
         'in_list' => 'Elija una de las opciones: mensual, trimestral, semestral o anual',
+    ],
+    'value' => [
+        'required'           => 'Ingrese el valor del plan.',
+    ],
+    'description' => [
+        'required'      => 'El Plan necesita una descripción.',
     ],
 ];
