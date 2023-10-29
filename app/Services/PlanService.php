@@ -58,6 +58,44 @@ class PlanService
         return $data;
     }
 
+
+    public function getAllArchived(): array
+    {
+        $plans = $this->planModel->onlyDeleted()->findAll();
+
+        $data = [];
+        foreach ($plans as $plan) {
+
+            $btnRecover = form_button(
+                [
+                    'data-id'       => $plan->id,
+                    'id'            => 'updatePlanBtn', //ID do HTML element
+                    'class'         => 'btn btn-primary btn-sm'
+                ],
+                '<i class="bi bi-recycle"></i>&nbsp;' . lang('App.btn_recover')
+            );
+
+            $btnDelete = form_button(
+                [
+                    'data-id'       => $plan->id,
+                    'id'            => 'archivePlanBtn', //ID do HTML element
+                    'class'         => 'btn btn-danger btn-sm'
+                ],
+                '<i class="bi bi-trash"></i>&nbsp;'  . lang('App.btn_delete')
+            );
+            $data[] = [
+                'code'              => $plan->plan_id,
+                'name'              => $plan->name,
+                'is_highlighted'    => $plan->isHighlighted(),
+                'details'           => $plan->details(),
+                'actions'           => $btnRecover . ' ' . $btnDelete,
+            ];
+        }
+
+        return $data;
+    }
+
+
     public function getRecorrences(string $recorrence = null): string
     {
         $options    = [];
@@ -116,24 +154,14 @@ class PlanService
     }
 
 
-
-    // private function createOrUpdatePlanOnGerencianet(Plan $plan)
-    // {
-    //     // Estamos criando um plano?
-    //     if (empty($plan->id)) {
-
-    //         // Sim.. criamos o plano na gerencianet
-
-    //         return $this->gerencianetService->createPlan($plan);
-    //     }
-
-    //     // Estamos atualizando....
-    //     // Contudo, precisamo verificar se o nome do plano foi alterado.
-    //     // a Gerencianet permite atualizar apenas o nome do plano.
-    //     if ($plan->hasChanged('name')) {
-
-    //         return $this->gerencianetService->updatePlan($plan);
-    //     }
-    // }
-
+    public function tryArchivePlan(int $id)
+    {
+        try {
+            $plan = $this->getPlanByID($id);
+            $this->planModel->delete($plan->id);
+        } catch (\Exception $e) {
+            die('Não foi possível arquivar o plano');
+            // die($e->getMessage());
+        }
+    }
 }

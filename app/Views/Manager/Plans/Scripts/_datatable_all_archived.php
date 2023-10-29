@@ -1,27 +1,29 @@
 <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-            "order": [],
-            "deferRender": true,
-            "processing": true,
-            "responsive": true,
-            "language": {
-                processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>',
+    new DataTable('#dataTable', {
+        "order": [],
+        "deferRender": true,
+        "processing": true,
+        "responsive": true,
+        "language": {
+            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>',
+        },
+        ajax: '<?php echo route_to('plans.get.all.archived'); ?>',
+        columns: [
+            {
+                data: 'code'
             },
-            ajax: '<?php echo route_to('categories.get.all.archived'); ?>',
-            columns: [{
-                    data: 'id'
-                },
-                {
-                    data: 'name'
-                },
-                {
-                    data: 'slug'
-                },
-                {
-                    data: 'actions'
-                },
-            ],
-        });
+            {
+                data: 'name'
+            },
+            {
+                data: 'is_highlighted'
+            },
+            {
+                data: 'details'
+            },
+            {
+                data: 'actions'
+            },
+        ]
     });
 </script>

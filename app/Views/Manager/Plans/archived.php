@@ -26,12 +26,11 @@
                 <div class="card-header">
                     <h5>
                         <?php echo lang('Plans.title_index'); ?>
-                        <button id="createPlanBtn" class="btn btn-success btn-sm float-end"><i class="bi bi-bookmark-plus"></i>&nbsp;<?php echo lang('App.btn_new'); ?></button>
                     </h5>
                 </div>
 
                 <div class="card-body">
-                    <a class="btn btn-primary btn-sm mt-2 mb-4" href="<?php echo route_to('plans.archived'); ?>"><i class="bi bi-archive"></i>&nbsp;<?php echo lang('App.btn_all_archived'); ?></a>
+                    <a class="btn btn-primary btn-sm mt-2 mb-4" href="<?php echo route_to('plans'); ?>"><i class="bi bi-arrow-left-square"></i>&nbsp;<?php echo lang('App.btn_back'); ?></a>
 
                     <table class="table table-borderless table-striped" id="dataTable">
                         <thead>
@@ -67,11 +66,11 @@
 <script src="<?php echo site_url('manager_assets/mask/app.js'); ?>"></script>
 <script src="<?php echo site_url('manager_assets/mask/jquery.mask.min.js'); ?>"></script>
 
-<?php echo $this->include('Manager/Plans/Scripts/_datatable_all'); ?>
-<?php echo $this->include('Manager/Plans/Scripts/_show_modal_to_create'); ?>
-<?php echo $this->include('Manager/Plans/Scripts/_submit_modal_create_update'); ?>
-<?php echo $this->include('Manager/Plans/Scripts/_get_plan_info'); ?>
-<?php echo $this->include('Manager/Plans/Scripts/_archive_plan'); ?>
+<?php echo $this->include('Manager/Plans/Scripts/_datatable_all_archived'); ?>
+<?php //echo $this->include('Manager/Plans/Scripts/_recover_plan'); 
+?>
+<?php //echo $this->include('Manager/Plans/Scripts/_delete_plan');
+?>
 
 <script>
     function refreshCSRFToken(token) {
