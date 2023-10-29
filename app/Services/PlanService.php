@@ -78,14 +78,13 @@ class PlanService
 
         // Estamos efetivamente editando um plano...
 
-        // $selected[] = match ($recorrence) {
-
-        //     Plan::OPTION_MONTHLY        => Plan::OPTION_MONTHLY,
-        //     Plan::OPTION_QUARTERLY      => Plan::OPTION_QUARTERLY,
-        //     Plan::OPTION_SEMESTER       => Plan::OPTION_SEMESTER,
-        //     Plan::OPTION_YEARLY         => Plan::OPTION_YEARLY,
-        //     default                     => throw new \InvalidArgumentException("Unsupported recorrence {$recorrence}")
-        // };
+        $selected[] = match ($recorrence) {
+            Plan::OPTION_MONTHLY        => Plan::OPTION_MONTHLY,
+            Plan::OPTION_QUARTERLY      => Plan::OPTION_QUARTERLY,
+            Plan::OPTION_SEMESTER       => Plan::OPTION_SEMESTER,
+            Plan::OPTION_YEARLY         => Plan::OPTION_YEARLY,
+            default                     => throw new \InvalidArgumentException("Unsupported recorrence {$recorrence}")
+        };
 
 
         return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
