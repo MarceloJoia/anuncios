@@ -1,11 +1,11 @@
 <script>
-    $(document).on('click', '#deleteCategoryBtn', function(e) {
+    $(document).on('click', '#deletePlanBtn', function(e) {
 
         e.preventDefault();
 
         var id = $(this).data('id');
 
-        var url = '<?php echo route_to('categories.delete'); ?>';
+        var url = '<?php echo route_to('plans.delete'); ?>';
 
         Swal.fire({
             title: '<?php echo lang('App.delete_confirmation'); ?>',

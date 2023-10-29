@@ -100,6 +100,24 @@ class PlansController extends BaseController
 
 
 
+    public function recover()
+    {
+        $this->planService->tryRecoverPlan($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->planRequest->respondWithMessage(message: lang('App.success_recovered')));
+    }
+
+
+
+    public function delete()
+    {
+        $this->planService->tryDeletePlan($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->planRequest->respondWithMessage(message: lang('App.success_deleted')));
+    }
+
+
+
 
     public function getPlanInfo()
     {

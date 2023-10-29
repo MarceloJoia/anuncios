@@ -69,7 +69,7 @@ class PlanService
             $btnRecover = form_button(
                 [
                     'data-id'       => $plan->id,
-                    'id'            => 'updatePlanBtn', //ID do HTML element
+                    'id'            => 'recoverPlanBtn', //ID do HTML element
                     'class'         => 'btn btn-primary btn-sm'
                 ],
                 '<i class="bi bi-recycle"></i>&nbsp;' . lang('App.btn_recover')
@@ -78,7 +78,7 @@ class PlanService
             $btnDelete = form_button(
                 [
                     'data-id'       => $plan->id,
-                    'id'            => 'archivePlanBtn', //ID do HTML element
+                    'id'            => 'deletePlanBtn', //ID do HTML element
                     'class'         => 'btn btn-danger btn-sm'
                 ],
                 '<i class="bi bi-trash"></i>&nbsp;'  . lang('App.btn_delete')
@@ -159,6 +159,36 @@ class PlanService
         try {
             $plan = $this->getPlanByID($id);
             $this->planModel->delete($plan->id);
+        } catch (\Exception $e) {
+            die('Não foi possível arquivar o plano');
+            // die($e->getMessage());
+        }
+    }
+
+
+    public function tryDeletePlan(int $id)
+    {
+        try {
+            $plan = $this->getPlanByID($id, withDeleted:true);
+            /**
+             * @todo  deleta plano na gerencia net
+             */
+            $this->planModel->delete($plan->id, purge:true);
+        } catch (\Exception $e) {
+            die('Não foi possível arquivar o plano');
+            // die($e->getMessage());
+        }
+    }
+
+
+    public function tryRecoverPlan(int $id)
+    {
+        try {
+            $plan = $this->getPlanByID($id, withDeleted: true);
+
+            $plan->recover();
+
+            $this->planModel->protect(false)->save($plan);
         } catch (\Exception $e) {
             die('Não foi possível arquivar o plano');
             // die($e->getMessage());

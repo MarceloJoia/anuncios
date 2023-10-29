@@ -62,15 +62,13 @@
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 <!-- Fim Data Table -->
 
-<!-- Mascaras -->
-<script src="<?php echo site_url('manager_assets/mask/app.js'); ?>"></script>
-<script src="<?php echo site_url('manager_assets/mask/jquery.mask.min.js'); ?>"></script>
+<!-- Sweet Alert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Fim Sweet Alert2 -->
 
 <?php echo $this->include('Manager/Plans/Scripts/_datatable_all_archived'); ?>
-<?php //echo $this->include('Manager/Plans/Scripts/_recover_plan'); 
-?>
-<?php //echo $this->include('Manager/Plans/Scripts/_delete_plan');
-?>
+<?php echo $this->include('Manager/Plans/Scripts/_recover_plan'); ?>
+<?php echo $this->include('Manager/Plans/Scripts/_delete_plan'); ?>
 
 <script>
     function refreshCSRFToken(token) {
