@@ -88,7 +88,7 @@ class PlanService
         // };
 
 
-        // return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
+        return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
     }
 
     public function trySavePlan(Plan $plan, bool $protect = true)
@@ -103,6 +103,20 @@ class PlanService
             die($e->getMessage());
         }
     }
+
+
+    public function getPlanByID(int $id, bool $withDeleted = false)
+    {
+        $plan = $this->planModel->withDeleted($withDeleted)->find($id);
+
+        if (is_null($plan)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Plan not found');
+        }
+
+        return $plan;
+    }
+
+
 
     // private function createOrUpdatePlanOnGerencianet(Plan $plan)
     // {
