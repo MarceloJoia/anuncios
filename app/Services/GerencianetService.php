@@ -73,59 +73,34 @@ class GerencianetService
         } catch (GerencianetException $e) {
 
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-
             die('Erro ao salvar plano na gerencianet');
         } catch (\Exception $e) {
 
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-
             die('Erro ao salvar plano na gerencianet');
         }
     }
 
 
-    // // public function updatePlan(Plan $plan)
-    // // {
-    // //     $params = ['id' => $plan->plan_id];
+    public function updatePlan(Plan $plan)
+    {
+        $params = ['id' => $plan->plan_id];
 
-    // //     $body = ['name' => $plan->name];
+        $body = ['name' => $plan->name];
 
-    // //     try {
-    // //         $api = new Gerencianet($this->options);
-    // //         $response = $api->updatePlan($params, $body);
+        try {
+            $api = new Gerencianet($this->options);
+            $response = $api->updatePlan($params, $body);
 
-    // //         //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
-    // //     } catch (GerencianetException $e) {
-    // //         log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-
-    // //         die('Erro ao salvar plano na gerencianet');
-    // //     } catch (\Exception $e) {
-
-    // //         log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-
-    // //         die('Erro ao salvar plano na gerencianet');
-    // //     }
-    // // }
-
-    // public function updatePlan(Plan $plan)
-    // {
-    //     $params = ['id' => $plan->plan_id];
-
-    //     $body = ['name' => $plan->name];
-
-    //     try {
-    //         $api = new Gerencianet($this->options);
-    //         $response = $api->updatePlan($params, $body);
-
-    //         //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
-    //     } catch (GerencianetException $e) {
-    //         log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-    //         die('Erro ao salvar plano na gerencianet');
-    //     } catch (\Exception $e) {
-    //         log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-    //         die('Erro ao salvar plano na gerencianet');
-    //     }
-    // }
+            //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
+        } catch (GerencianetException $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao salvar plano na gerencianet');
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao salvar plano na gerencianet');
+        }
+    }
 
 
     // public function deletePlan(int $planID)
