@@ -77,6 +77,4 @@
     }
 </script>
 
-
-
 <?= $this->endSection(); ?>

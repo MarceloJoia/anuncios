@@ -10,10 +10,12 @@ use CodeIgniter\Config\Factories;
 class PlanService
 {
     private $planModel;
+    private $gerencianetService;
 
     public function __construct()
     {
         $this->planModel = Factories::models(PlanModel::class);
+        $this->gerencianetService = Factories::class(GerencianetService::class);
     }
 
 
@@ -169,11 +171,11 @@ class PlanService
     public function tryDeletePlan(int $id)
     {
         try {
-            $plan = $this->getPlanByID($id, withDeleted:true);
+            $plan = $this->getPlanByID($id, withDeleted: true);
             /**
              * @todo  deleta plano na gerencia net
              */
-            $this->planModel->delete($plan->id, purge:true);
+            $this->planModel->delete($plan->id, purge: true);
         } catch (\Exception $e) {
             die('Não foi possível arquivar o plano');
             // die($e->getMessage());
@@ -192,6 +194,21 @@ class PlanService
         } catch (\Exception $e) {
             die('Não foi possível arquivar o plano');
             // die($e->getMessage());
+        }
+    }
+
+    private function createOrUpdatePlanOnGerencianet(Plan $plan)
+    {
+        // Estamos criando um plano?
+        if (empty($plan->id)) {
+            // Sim.. criamos o plano na gerencianet
+            return $this->gerencianetService->createPlan($plan);
+        }
+        // Estamos atualizando....
+        // Contudo, precisamo verificar se o nome do plano foi alterado.
+        // a Gerencianet permite atualizar apenas o nome do plano.
+        if ($plan->hasChanged('name')) {
+            return $this->gerencianetService->updatePlan($plan);
         }
     }
 }
