@@ -103,27 +103,22 @@ class GerencianetService
     }
 
 
-    // public function deletePlan(int $planID)
-    // {
-    //     $params = ['id' => $planID];
+    public function deletePlan(int $planID)
+    {
+        $params = ['id' => $planID];
 
-    //     try {
-    //         $api = new Gerencianet($this->options);
-    //         $response = $api->deletePlan($params, []);
-
-    //         //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
-    //     } catch (GerencianetException $e) {
-
-    //         log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-
-    //         die('Erro ao excluir plano na gerencianet');
-    //     } catch (\Exception $e) {
-
-    //         log_message('error', '[ERROR] {exception}', ['exception' => $e]);
-
-    //         die('Erro ao excluir plano na gerencianet');
-    //     }
-    // }
+        try {
+            $api = new Gerencianet($this->options);
+            $response = $api->deletePlan($params, []);
+            //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
+        } catch (GerencianetException $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao excluir plano na gerencianet');
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao excluir plano na gerencianet');
+        }
+    }
 
 
     // //----------------------------Gerenciamento de assinaturas--------------------//

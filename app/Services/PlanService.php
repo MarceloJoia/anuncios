@@ -172,9 +172,7 @@ class PlanService
     {
         try {
             $plan = $this->getPlanByID($id, withDeleted: true);
-            /**
-             * @todo  deleta plano na gerencia net
-             */
+            $this->gerencianetService->deletePlan($plan->plan_id);
             $this->planModel->delete($plan->id, purge: true);
         } catch (\Exception $e) {
             die('Não foi possível arquivar o plano');
