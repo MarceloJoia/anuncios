@@ -133,7 +133,7 @@ class PlanService
     public function trySavePlan(Plan $plan, bool $protect = true)
     {
         try {
-            // $this->createOrUpdatePlanOnGerencianet($plan);
+            $this->createOrUpdatePlanOnGerencianet($plan);
             if ($plan->hasChanged()) {
                 $this->planModel->protect($protect)->save($plan);
             }

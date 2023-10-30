@@ -35,6 +35,7 @@
                     <div class="mb-3">
                         <label for="adverts" class="form-label"><?php echo lang('Plans.label_adverts'); ?></label>
                         <input type="number" class="form-control" id="adverts" name="adverts">
+                        <small><?php echo lang('Plans.text_info_adverts'); ?></small>
                         <span class="text-danger error-text adverts"></span>
                     </div>
 

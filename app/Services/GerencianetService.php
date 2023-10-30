@@ -51,9 +51,10 @@ class GerencianetService
         // Definimos a periodicidade das cobranças a serem geradas
         $plan->setIntervalRepeats();
 
-        echo '<pre>';
-        print_r($plan);
-        throw new Exception('Teste');
+        // echo '<pre>';
+        // print_r($plan);
+
+        // throw new Exception('Teste');
 
         $body = [
             'name'          => $plan->name,
@@ -65,10 +66,10 @@ class GerencianetService
             $api = new Gerencianet($this->options);
             $response = $api->createPlan([], $body);
 
-            // $plan->plan_id = (int) $response['data']['plan_id'];
+            $plan->plan_id = (int) $response['data']['plan_id'];
 
-            echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
-            exit;
+            // echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
+            // exit;
         } catch (GerencianetException $e) {
 
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);
