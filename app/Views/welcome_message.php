@@ -249,7 +249,7 @@
                 <li class="menu-item hidden"><a href="https://forum.codeigniter.com/" target="_blank">Community</a></li>
                 <li class="menu-item hidden"><a href="https://github.com/codeigniter4/CodeIgniter4/blob/master/CONTRIBUTING.md" target="_blank">Contribute</a>
                 </li>
-                <?php if (! auth()->check()) : ?>
+                <?php if (!auth()->check()) : ?>
                     <li class="menu-item hidden"><a href="<?= route_to('login') ?>">Login</a></li>
                     <li class="menu-item hidden"><a href="<?= route_to('register') ?>">Register</a></li>
                 <?php else : ?>
@@ -263,6 +263,8 @@
             <h1>Welcome to CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></h1>
 
             <h2>The small framework with powerful features</h2>
+
+            <a href="<?php echo route_to('manager'); ?>">Manager</a>
 
         </div>
 
