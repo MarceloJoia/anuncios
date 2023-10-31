@@ -18,3 +18,5 @@ if (file_exists($api = ROOTPATH . 'routes/api.php')) {
     require $api;
 }
 
+// Rota do auth packege
+\Fluent\Auth\Facades\Auth::routes();

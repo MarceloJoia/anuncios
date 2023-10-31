@@ -53,3 +53,13 @@ Events::on('pre_system', static function () {
         }
     }
 });
+
+
+//=> Events do auth package
+Events::on(\Fluent\Auth\Contracts\VerifyEmailInterface::class, function ($email) {
+    (new \App\Notifications\VerificationNotification($email))->send();
+});
+
+Events::on(\Fluent\Auth\Contracts\ResetPasswordInterface::class, function ($email, $token) {
+    (new \App\Notifications\ResetPasswordNotification($email, $token))->send();
+});

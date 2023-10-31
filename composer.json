@@ -11,6 +11,7 @@
     },
     "require": {
         "php": "^7.4 || ^8.0",
+        "agungsugiarto/codeigniter4-authentication": "^2.0",
         "codeigniter4/framework": "^4.0",
         "gerencianet/gerencianet-sdk-php": "^5.1"
     },
