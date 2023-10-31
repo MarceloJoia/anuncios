@@ -8,29 +8,29 @@
                     <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                     </svg>
-                    Back to log in
+                    Volte ao login
                 </a>
             </p>
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="signin-inner my-3 my-lg-0 bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
                     <div class="text-center text-md-center mb-4 mt-md-0">
-                        <h1 class="mb-0 h3">Forgot your password?</h1>
+                        <h1 class="mb-0 h3">Esqueceu sua senha?</h1>
                     </div>
                     <!-- Validation Errors and Message -->
                     <?= $this->include('Auth/messages') ?>
-                    <p class="mb-4">Don't fret! Just type in your email and we will send you a code to reset your password!</p>
+                    <p class="mb-4">Não se preocupe! Basta digitar seu e-mail e enviaremos um código para redefinir sua senha!</p>
                     <form method="post" action="<?= route_to('password.email') ?>">
                         <?= csrf_field() ?>
                         <!-- Form -->
                         <div class="mb-4">
-                            <label for="email">Your Email</label>
+                            <label for="email">Seu email</label>
                             <div class="input-group">
                                 <input type="email" value="<?= old('email') ?>" name="email" class="form-control" id="email" placeholder="john@company.com" required autofocus>
                             </div>
                         </div>
                         <!-- End of Form -->
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-gray-800">Recover password</button>
+                            <button type="submit" class="btn btn-gray-800">Recuperar senha</button>
                         </div>
                     </form>
                 </div>

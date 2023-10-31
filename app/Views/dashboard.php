@@ -267,7 +267,9 @@
 				</li>
 				<li class="menu-item hidden"><a href="/">Home</a></li>
 				<li class="menu-item hidden">
+
 					<form method="POST" action="<?= route_to('logout') ?>">
+						<?php echo csrf_field(); ?>
 						<button type="submit">Logout</button>
 					</form>
 				</li>

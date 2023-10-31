@@ -8,7 +8,7 @@
                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                 </svg>
-                Back to homepage
+                Voltar à página inicial
             </a>
         </p>
         <div class="row justify-content-center form-bg-image">
@@ -23,13 +23,13 @@
                         <!-- Form -->
                         <?= csrf_field() ?>
                         <div class="mb-4">
-                            <label for="email">Your Username</label>
+                            <label for="email">Seu nome de usuário</label>
                             <div class="input-group">
                                 <input type="text" value="<?= old('username') ?>" name="username" class="form-control" id="email" placeholder="johndoe" required="" autofocus="">
                             </div>
                         </div>
                         <div class="form-group mb-4">
-                            <label for="email">Your Email</label>
+                            <label for="email">Seu Email</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1">
                                     <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <!-- Form -->
                             <div class="form-group mb-4">
-                                <label for="password">Your Password</label>
+                                <label for="password">Sua senha</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2">
                                         <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,7 @@
                             <!-- End of Form -->
                             <!-- Form -->
                             <div class="form-group mb-4">
-                                <label for="confirm_password">Confirm Password</label>
+                                <label for="confirm_password">Confirme sua senha</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2">
                                         <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -70,12 +70,12 @@
                             <!-- End of Form -->
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-gray-800">Sign up</button>
+                            <button type="submit" class="btn btn-gray-800">Enviar</button>
                         </div>
                     </form>
                     <div class="d-flex justify-content-center align-items-center mt-4">
                         <span class="fw-normal">
-                            Already have an account?
+                        Já tem uma conta?
                             <a href="<?= route_to('login') ?>" class="fw-bold">Login here</a>
                         </span>
                     </div>

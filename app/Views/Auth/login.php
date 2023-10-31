@@ -8,14 +8,14 @@
                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                 </svg>
-                Back to homepage
+                Voltar à página inicial
             </a>
         </p>
         <div class="row justify-content-center form-bg-image">
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                     <div class="text-center text-md-center mb-4 mt-md-0">
-                        <h1 class="mb-0 h3">Sign in to our platform</h1>
+                        <h1 class="mb-0 h3">Faça login em nossa plataforma</h1>
                     </div>
                     <!-- Validation Errors and Message -->
                     <?= $this->include('Auth/messages') ?>
@@ -23,7 +23,7 @@
                         <!-- Form -->
                         <?= csrf_field() ?>
                         <div class="form-group mb-4">
-                            <label for="email">Your Email</label>
+                            <label for="email">Seu Email</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1">
                                     <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <!-- Form -->
                             <div class="form-group mb-4">
-                                <label for="password">Your Password</label>
+                                <label for="password">Sua senha</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2">
                                         <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -53,10 +53,10 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember">
                                     <label class="form-check-label mb-0" for="remember">
-                                        Remember me
+                                    Lembre de mim
                                     </label>
                                 </div>
-                                <div><a href="<?= route_to('password.request') ?>" class="small text-right">Lost password?</a></div>
+                                <div><a href="<?= route_to('password.request') ?>" class="small text-right">Senha perdida?</a></div>
                             </div>
                         </div>
                         <div class="d-grid">
@@ -65,8 +65,8 @@
                     </form>
                     <div class="d-flex justify-content-center align-items-center mt-4">
                         <span class="fw-normal">
-                            Not registered?
-                            <a href="<?= route_to('register') ?>" class="fw-bold">Create account</a>
+                        Não registrado?
+                            <a href="<?= route_to('register') ?>" class="fw-bold">Criar uma conta</a>
                         </span>
                     </div>
                 </div>

@@ -93,7 +93,7 @@ class AuthenticatedSessionController extends BaseController
     {
         Auth::logout();
 
-        return redirect('/')->withCookies();
+        return redirect()->to(site_url('/'))->withCookies();
     }
 
     /**
