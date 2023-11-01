@@ -8,6 +8,7 @@ class ManagerController extends BaseController
 {
     public function index()
     {
+
         $data = [
             'title' => 'Home do Manager',
         ];

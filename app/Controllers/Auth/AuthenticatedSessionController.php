@@ -65,12 +65,12 @@ class AuthenticatedSessionController extends BaseController
         }
 
         // Validate this credentials request.
-        if (! $this->validate(['email' => 'required|valid_email', 'password' => 'required'])) {
+        if (!$this->validate(['email' => 'required|valid_email', 'password' => 'required'])) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
         // Try to login this credentials.
-        if (! Auth::attempt($credentials, $remember)) {
+        if (!Auth::attempt($credentials, $remember)) {
             // Save throttle state.
             RateLimiter::hit($this->throttleKey(), static::DECAY_SECOND);
 
@@ -80,9 +80,35 @@ class AuthenticatedSessionController extends BaseController
         // Clear the throttle key
         RateLimiter::clear($this->throttleKey());
 
+
+        //=> Se for super Admin Manda para o Manager
+        if (Auth::user()->isSuperadmin()) {
+            return redirect()->route('manager')->with('success', lang('App.messages.welcome', ['name' => Auth::user()->name ?? Auth::user()->username]));
+        }
+
+        // // O usuário estava tentando comprar um plano?
+        // if (session()->has('choice')) {
+        //     // Sim... então redirecionamos ele para a mesma rota de compra
+        //     return redirect()->to(session('choice'));
+        // }
+
+        // // Estava tentando perguntar?
+        // if (session()->has('details')) {
+        //     // Sim... então redirecionamos ele para a mesma rota de pergunta
+        //     $redirectTo = session('details');
+        //     session()->remove('details');
+        //     return redirect()->to($redirectTo);
+        // }
+
+
+
         // Finnaly we're success login.
-        return redirect(config('Auth')->home)->withCookies();
+        return redirect(config('Auth')->home)
+            ->with('success', lang('App.messages.welcome', ['name' => Auth::user()->name ?? Auth::user()->username]))
+            ->withCookies();
     }
+
+
 
     /**
      * Destroy an authenticated session.
@@ -125,7 +151,7 @@ class AuthenticatedSessionController extends BaseController
     {
         $value = $this->request->getVar($key);
 
-        return ! is_bool($value) && ! is_array($value) && trim((string) $value) === '';
+        return !is_bool($value) && !is_array($value) && trim((string) $value) === '';
     }
 
     /**

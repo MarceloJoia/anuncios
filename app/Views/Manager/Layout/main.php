@@ -89,19 +89,9 @@
 
                 </div>
             </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
+            <!-- Mansagens -->
+            <?php echo $this->include('Manager/Layout/_session_messages'); ?>
 
             <!-- Page content-->
             <?php echo $this->renderSection('content'); ?>
@@ -120,7 +110,7 @@
     <!-- Core theme JS-->
     <script src="<?php echo site_url('manager_assets/js/scripts.js'); ?>"></script>
 
-    
+
 
     <!-- toastr js -->
     <script src="<?php echo site_url('manager_assets/toastr/toastr.min.js'); ?>"></script>
