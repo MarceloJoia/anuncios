@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index', ['as' => 'home']);
+$routes->get('/', 'HomeController::index', ['as' => 'web.home']);
 
 
 // Rotas para o manager
