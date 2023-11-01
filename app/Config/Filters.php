@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 use \App\Filters\AuthFilter;
+use App\Filters\SuperadminFilter;
 
 class Filters extends BaseConfig
 {
@@ -39,6 +40,11 @@ class Filters extends BaseConfig
         'guest'    => \Fluent\Auth\Filters\RedirectAuthenticatedFilter::class,
         'throttle' => \Fluent\Auth\Filters\ThrottleFilter::class,
         'verified' => \Fluent\Auth\Filters\EmailVerifiedFilter::class,
+
+        'superadmin' => [
+            AuthFilter::class,
+            SuperadminFilter::class,
+        ],
     ];
 
     /**

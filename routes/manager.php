@@ -1,6 +1,6 @@
 <?php
 
-$routes->group('{locale}/manager', ['namespace' => 'App\Controllers\Manager', 'filter' => 'auth:web'], function ($routes) {
+$routes->group('{locale}/manager', ['namespace' => 'App\Controllers\Manager', 'filter' => 'superadmin'], function ($routes) {
 
     $routes->get('/', 'ManagerController::index', ['as' => 'manager']);
 
