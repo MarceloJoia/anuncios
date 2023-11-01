@@ -4,6 +4,8 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
+// php spark db:seed GeneralSeeder
+
 class GeneralSeeder extends Seeder
 {
     public function run()

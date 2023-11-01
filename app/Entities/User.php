@@ -15,6 +15,8 @@ use Fluent\Auth\Traits\CanResetPasswordTrait;
 use Fluent\Auth\Traits\HasAccessTokensTrait;
 use Fluent\Auth\Traits\MustVerifyEmailTrait;
 
+use App\Traits\AdsAuthorizationTrait;
+
 class User extends Entity implements
     AuthenticatorInterface,
     AuthorizableInterface,
@@ -27,6 +29,8 @@ class User extends Entity implements
     use CanResetPasswordTrait;
     use HasAccessTokensTrait;
     use MustVerifyEmailTrait;
+
+    use AdsAuthorizationTrait; //=> Meu Trait SuperADM
 
     /**
      * Array of field names and the type of value to cast them as

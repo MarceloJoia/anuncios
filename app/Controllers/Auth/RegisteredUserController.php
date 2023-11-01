@@ -57,6 +57,7 @@ class RegisteredUserController extends BaseController
      */
     protected static function rules()
     {
+        //=> [ alpha_numeric_space ] Não permite usar acento no username
         return [
             'username'              => 'required|alpha_numeric_space|min_length[3]|is_unique[users.username]',
             'email'                 => 'required|valid_email|is_unique[users.email]',
