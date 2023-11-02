@@ -61,22 +61,22 @@
                             <ul class="navbar-nav ml-auto main-nav">
 
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="<?php echo  route_to('web.home'); ?>">Home</a>
+                                    <a class="nav-link" href="<?php echo route_to('web.home'); ?>">Home</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo  route_to('pricing'); ?>">Nossos Planos</a>
+                                    <a class="nav-link" href="<?php echo route_to('pricing'); ?>">Nossos Planos</a>
                                 </li>
 
                                 <?php if (auth()->check()) : ?>
 
-                                    <?php if (auth()->user()->isSuperadmin()) : ?>
+                                    <?php if (!auth()->user()->isSuperadmin()) : ?>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo  route_to('dashboard'); ?>">Dashboard</a>
+                                            <a class="nav-link" href="<?php echo route_to('dashboard'); ?>">Dashboard</a>
                                         </li>
                                     <?php else : ?>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo  route_to('manager'); ?>">Manager</a>
+                                            <a class="nav-link" href="<?php echo route_to('manager'); ?>">Manager</a>
                                         </li>
                                     <?php endif; ?>
 
