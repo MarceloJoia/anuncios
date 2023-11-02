@@ -10,9 +10,7 @@
 <link href="https://cdn.datatables.net/v/bs4/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
 
 <style>
-	/**
-     * Para acompanhar o estilo dos inputs
-     */
+	/** Para acompanhar o estilo dos inputs */
 	select {
 		height: 50px !important;
 	}
@@ -21,14 +19,9 @@
 		height: 30px !important;
 	}
 
-
-	/**
-     * Criamos a classe .modal-xl que não tem nessa versão do bootstrap do template
-     */
+	/** Criamos a classe .modal-xl que não tem nessa versão do bootstrap do template */
 	@media (min-width: 1200px) {
-
 		.modal-xl {
-
 			max-width: 1140px;
 		}
 	}
@@ -106,6 +99,7 @@
 <?php echo $this->include('Dashboard/Adverts/Scripts/_datatable_all'); ?>
 <?php echo $this->include('Dashboard/Adverts/Scripts/_get_my_advert'); ?>
 <?php echo $this->include('Dashboard/Adverts/Scripts/_show_modal_to_create'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_submit_modal_create_update'); ?>
 
 
 <script>

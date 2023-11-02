@@ -36,7 +36,7 @@
 
         }, 'json').fail(function() {
 
-            toastr.error("We couldn't find the ad");
+            toastr.error("Não conseguimos encontrar o anúncio");
 
         });
 

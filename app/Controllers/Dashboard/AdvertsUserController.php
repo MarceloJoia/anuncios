@@ -74,7 +74,7 @@ class AdvertsUserController extends BaseController
 
         $advert = $this->advertService->getAdvertByID($this->request->getGetPost('id'));
 
-    
+
         $options = [
             'class'         => 'form-control',
             'placeholder'   => lang('Categories.label_choose_category'),
@@ -100,19 +100,23 @@ class AdvertsUserController extends BaseController
     //     return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_saved')));
     // }
 
-    // public function updateUserAdvert()
-    // {
 
-    //     $this->advertRequest->validateBeforeSave('advert');
+    public function updateUserAdvert()
+    {
 
-    //     $advert = $this->advertService->getAdvertByID($this->request->getGetPost('id'));
+        echo '<pre>';
+        print_r($this->removeSpoofingFromRequest());
 
-    //     $advert->fill($this->removeSpoofingFromRequest());
+        // $this->advertRequest->validateBeforeSave('advert');
 
-    //     $this->advertService->trySaveAdvert($advert);
+        // $advert = $this->advertService->getAdvertByID($this->request->getGetPost('id'));
 
-    //     return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_saved')));
-    // }
+        // $advert->fill($this->removeSpoofingFromRequest());
+
+        // $this->advertService->trySaveAdvert($advert);
+
+        // return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_saved')));
+    }
 
 
     // public function getCategoriesAndSituations()
