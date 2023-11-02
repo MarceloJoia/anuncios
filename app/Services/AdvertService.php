@@ -308,26 +308,22 @@ class AdvertService
         return form_dropdown('situation', $options, $selected, ['class' => 'form-control']);
     }
 
-    
 
-    // public function trySaveAdvert(Advert $advert, bool $protect = true, bool $notifyUserIfPublished = false)
-    // {
 
-    //     try {
-
-    //         $advert->unsetAuxiliaryAttributes();
-
-    //         if ($advert->hasChanged()) {
-
-    //             $this->advertModel->trySaveAdvert($advert, $protect);
-
-    //             $this->fireAdvertEvents($advert, $notifyUserIfPublished);
-    //         }
-    //     } catch (\Exception $e) {
-
-    //         die('Error saving data');
-    //     }
-    // }
+    public function trySaveAdvert(Advert $advert, bool $protect = true, bool $notifyUserIfPublished = false)
+    {
+        try {
+            $advert->unsetAuxiliaryAttributes();
+            if ($advert->hasChanged()) {
+                $this->advertModel->trySaveAdvert($advert, $protect);
+                /** @todo Disparar evento de notificação para o anunciante e para o manager */
+                // $this->fireAdvertEvents($advert, $notifyUserIfPublished);
+            }
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Error saving data');
+        }
+    }
 
 
     // public function tryStoreAdvertImages(array $images, int $advertID)

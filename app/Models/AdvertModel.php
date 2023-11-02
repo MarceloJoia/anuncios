@@ -96,6 +96,19 @@ class AdvertModel extends MyBaseModel
         return $data;
     }
 
+
+    protected function unpublish(array $data): array
+    {
+        // Houve alteração no title ou description?
+        if (isset($data['data']['title']) || isset($data['data']['description'])) {
+            // Sim.... houve alteração.... então tornamos o anúncio como não publicado (false)
+            $data['data']['is_published'] = false;
+        }
+
+        return $data;
+    }
+
+
     /**
      * Recupera todos os anúncios de acordo com o usuário logado.
      *
@@ -184,5 +197,25 @@ class AdvertModel extends MyBaseModel
     public function getAdvertImages(int $advertID): array
     {
         return $this->db->table('adverts_images')->where('advert_id', $advertID)->get()->getResult();
+    }
+
+
+    /**
+     * Salva o anúncio no database
+     *
+     * @param Advert $advert
+     * @param boolean $protect
+     * @return void
+     */
+    public function trySaveAdvert(Advert $advert, bool $protect = true)
+    {
+        try {
+            $this->db->transStart();
+            $this->protect($protect)->save($advert);
+            $this->db->transComplete();
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Error saving data');
+        }
     }
 }
