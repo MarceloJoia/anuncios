@@ -1,4 +1,4 @@
-<?php echo $this->extend('Web/Layout/dashboard'); ?>
+<?php echo $this->extend('Dashboard/Layout/main'); ?>
 
 <?= $this->section('title') ?>
 <?php echo $title ?? ''; ?>
@@ -23,7 +23,7 @@
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
-					
+
 					<!-- Título -->
 					<h3 class="widget-header"><?php echo lang('Asd.title.index'); ?></h3>
 

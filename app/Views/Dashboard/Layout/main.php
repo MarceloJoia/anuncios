@@ -176,7 +176,7 @@
 
 
 	<!-- Mansagens -->
-	<?php echo $this->include('Web/Layout/_session_messages'); ?>
+	<?php echo $this->include('Dashboard/Layout/_session_messages'); ?>
 
 	<!-- Page content-->
 	<?php echo $this->renderSection('content'); ?>
