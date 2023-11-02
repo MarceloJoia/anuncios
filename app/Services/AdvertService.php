@@ -18,8 +18,8 @@ class AdvertService
 
     public function __construct()
     {
-        $this->user = service('auth')->user() ?? auth('api')->user();
-
+        // $this->user = service('auth')->user() ?? auth('api')->user();
+        $this->user = service('auth')->user();
         $this->advertModel = Factories::models(AdvertModel::class);
     }
 
@@ -30,15 +30,15 @@ class AdvertService
         bool $showBtnQuestions = true,
         string $classBtnActions = 'btn btn-primary btn-sm',
         string $sizeImage = 'small',
-    ): array {
-
-
+    ) {
         $adverts = $this->advertModel->getAllAdverts();
 
         $data = [];
 
+        /** @var string $baseRouteToEditImages para editar imagem */
         $baseRouteToEditImages  = $this->user->isSuperadmin() ? 'adverts.manager.edit.images' : 'adverts.my.edit.images';
 
+        /** @var string $baseRouteToQuestions para editar as perguntas */
         $baseRouteToQuestions   = $this->user->isSuperadmin() ? 'adverts.manager.edit.questions' : 'adverts.my.edit.questions';
 
 
@@ -55,10 +55,9 @@ class AdvertService
                         'id'      => 'btnArchiveAdvert', // ID do html element
                         'class'   => 'dropdown-item'
                     ],
-                    lang('App.btn_archive')
+                    '<i class="bi bi-archive-fill"></i>&nbsp;'  . lang('App.btn_archive')
                 );
             }
-
 
             $btnEdit = form_button(
                 [
@@ -66,7 +65,7 @@ class AdvertService
                     'id'      => 'btnEditAdvert', // ID do html element
                     'class'   => 'dropdown-item'
                 ],
-                lang('App.btn_edit')
+                '<i class="bi bi-pencil-square"></i>&nbsp;' . lang('App.btn_edit')
             );
 
 
@@ -77,7 +76,7 @@ class AdvertService
                     'class'     => 'dropdown-item',
                     'onClick'   => "location.href='{$finalRouteToEditImages}'",
                 ],
-                lang('Adverts.btn_edit_images')
+                '<i class="bi bi-image"></i>&nbsp;'  . lang('Adverts.btn_edit_images')
             );
 
 
@@ -93,7 +92,7 @@ class AdvertService
                         'class'     => 'dropdown-item',
                         'onClick'   => "window.open('{$routeToViewAdvert}', '_blank')",
                     ],
-                    lang('Adverts.btn_view_advert')
+                    '<i class="bi bi-eye"></i>&nbsp;'  . lang('Adverts.btn_view_advert')
                 );
             }
 
@@ -110,7 +109,7 @@ class AdvertService
                         'class'     => 'dropdown-item',
                         'onClick'   => "location.href='{$finalRouteToEditQuestions}'",
                     ],
-                    lang('Adverts.btn_view_questions')
+                    '<i class="bi bi-person-raised-hand"></i>&nbsp;'  . lang('Adverts.btn_view_questions')
                 );
             }
 
@@ -171,13 +170,14 @@ class AdvertService
             $btnActions .= '</div>'; // Fechamento da div do dropdown
 
             $data[] = [
-                'image'                 => $advert->image(classImage: 'card-img-top img-custom', sizeImage: $sizeImage),
-                'title'                 => $advert->title,
-                'code'                  => $advert->code,
-                'category'              => $advert->category,
-                'is_published'          => $advert->isPublished(),
-                'address'               => $advert->address(),
-                'actions'               => $btnActions,
+                // 'image'        => $advert->image(classImage: 'card-img-top img-custom', sizeImage: $sizeImage),
+                'image'        => $advert->image(),
+                'title'        => $advert->title,
+                'code'         => $advert->code,
+                'category'     => $advert->category,
+                'is_published' => $advert->isPublished(),
+                'address'      => $advert->address(),
+                'actions'      => $btnActions,
             ];
         }
 

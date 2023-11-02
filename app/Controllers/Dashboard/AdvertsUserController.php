@@ -27,6 +27,8 @@ class AdvertsUserController extends BaseController
 
     public function index()
     {
+        // dd($this->advertService->getAllAdverts());
+
         return view('Dashboard/Adverts/index');
     }
 
@@ -39,7 +41,6 @@ class AdvertsUserController extends BaseController
     public function getUserAdverts()
     {
         if (!$this->request->isAJAX()) {
-
             return redirect()->back();
         }
 

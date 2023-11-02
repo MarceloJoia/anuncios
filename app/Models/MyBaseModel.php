@@ -32,7 +32,7 @@ class MyBaseModel extends Model
      *
      * @return void
      */
-    protected function setSQLModel()
+    protected function setSQLMode()
     {
         $this->db->simpleQuery("set session sql_mode=''");
     }

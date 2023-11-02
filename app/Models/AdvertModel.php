@@ -96,8 +96,41 @@ class AdvertModel extends MyBaseModel
         return $data;
     }
 
-    
+    /**
+     * Recupera todos os anúncios de acordo com o usuário logado.
+     *
+     * @param boolean $onlyDeleted
+     * @return void
+     */
+    public function getAllAdverts(bool $onlyDeleted = false)
+    {
+        $this->setSQLMode();
 
+        $builder = $this;
 
+        if ($onlyDeleted) {
+            $builder->onlyDeleted();
+        }
 
+        $tableFields = [
+            'adverts.*',
+            'categories.name AS category',
+            'adverts_images.image AS images', // apelido (alias) de 'images', que utilizaremos no método image() do Entity Advert
+        ];
+
+        $builder->select($tableFields);
+
+        // Quem está logado é o manager?
+        if (!$this->user->isSuperadmin()) {
+            // É o usuário anunciante.... então recuperamos apenas os anúncios dele
+            $builder->where('adverts.user_id', $this->user->id);
+        }
+
+        $builder->join('categories', 'categories.id = adverts.category_id');
+        $builder->join('adverts_images', 'adverts_images.advert_id = adverts.id', 'LEFT'); // Nem todos os anúncios terão imagens
+        $builder->groupBy('adverts.id'); // para não repetir registros
+        $builder->orderBy('adverts.id', 'DESC');
+
+        return $builder->findAll();
+    }
 }
