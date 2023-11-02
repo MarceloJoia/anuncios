@@ -53,9 +53,7 @@
             <div class="list-group list-group-flush">
 
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo route_to('manager'); ?>"><i class="bi bi-house-fill"></i>&nbsp;<?php echo lang('App.sidebar.manager.home'); ?></a>
-
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo route_to('categories'); ?>"><i class="bi bi-tags-fill"></i>&nbsp;<?php echo lang('App.sidebar.manager.categories'); ?></a>
-
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo route_to('plans'); ?>"><i class="bi bi-tags-fill"></i>&nbsp;<?php echo lang('App.sidebar.manager.plans'); ?></a>
 
             </div>

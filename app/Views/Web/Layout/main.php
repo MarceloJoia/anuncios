@@ -69,7 +69,6 @@
                                 </li>
 
                                 <?php if (auth()->check()) : ?>
-
                                     <?php if (!auth()->user()->isSuperadmin()) : ?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?php echo route_to('dashboard'); ?>">Dashboard</a>
@@ -79,7 +78,6 @@
                                             <a class="nav-link" href="<?php echo route_to('manager'); ?>">Manager</a>
                                         </li>
                                     <?php endif; ?>
-
                                 <?php endif; ?>
 
 

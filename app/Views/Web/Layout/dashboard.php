@@ -67,12 +67,31 @@
 						</button>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto main-nav ">
+
+
 								<li class="nav-item active">
-									<a class="nav-link" href="index.html">Home</a>
+									<a class="nav-link" href="<?php echo route_to('web.home'); ?>">Home</a>
 								</li>
+
 								<li class="nav-item">
-									<a class="nav-link" href="dashboard.html">Dashboard</a>
+									<a class="nav-link" href="<?php echo route_to('pricing'); ?>">Nossos Planos</a>
 								</li>
+
+								<?php if (auth()->check()) : ?>
+									<?php if (!auth()->user()->isSuperadmin()) : ?>
+										<li class="nav-item">
+											<a class="nav-link" href="<?php echo route_to('dashboard'); ?>">Dashboard</a>
+										</li>
+									<?php else : ?>
+										<li class="nav-item">
+											<a class="nav-link" href="<?php echo route_to('manager'); ?>">Manager</a>
+										</li>
+									<?php endif; ?>
+								<?php endif; ?>
+
+
+
+
 								<li class="nav-item dropdown dropdown-slide">
 									<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										Pages <span><i class="fa fa-angle-down"></i></span>
@@ -90,24 +109,33 @@
 									</div>
 								</li>
 								<li class="nav-item dropdown dropdown-slide">
+
 									<a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Listing <span><i class="fa fa-angle-down"></i></span>
+										<?php echo $language; ?> <span><i class="fa fa-angle-down"></i></span>
 									</a>
 									<!-- Dropdown list -->
 									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="#">Action</a>
-										<a class="dropdown-item" href="#">Another action</a>
-										<a class="dropdown-item" href="#">Something else here</a>
+										<a class="dropdown-item" href="<?php echo $urls->url_pt_br; ?>">Português Brasil</a>
+										<a class="dropdown-item" href="<?php echo $urls->url_en; ?>">English</a>
+										<a class="dropdown-item" href="<?php echo $urls->url_es; ?>">Españhol</a>
 									</div>
 								</li>
 							</ul>
 							<ul class="navbar-nav ml-auto mt-10">
+
+								<?php if (!auth()->check()) : ?>
+									<li class="nav-item">
+										<a class="nav-link login-button" href="<?php echo  route_to('login'); ?>">Login</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link login-button" href="<?php echo  route_to('register'); ?>">Registrar-se</a>
+									</li>
+								<?php endif; ?>
+
 								<li class="nav-item">
-									<a class="nav-link login-button" href="index.html">Login</a>
+									<a class="nav-link add-button" href="<?php echo  route_to('dashboard'); ?>"><i class="fa fa-plus-circle"></i> Criar anúncio</a>
 								</li>
-								<li class="nav-item">
-									<a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Add Listing</a>
-								</li>
+
 							</ul>
 						</div>
 					</nav>
@@ -116,6 +144,35 @@
 		</div>
 	</section>
 
+	<!-- Search -->
+	<section class="page-search">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Advance Search -->
+					<div class="advance-search">
+						<form>
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<input type="text" class="form-control" id="inputtext4" placeholder="What are you looking for">
+								</div>
+								<div class="form-group col-md-3">
+									<input type="text" class="form-control" id="inputCategory4" placeholder="Category">
+								</div>
+								<div class="form-group col-md-3">
+									<input type="text" class="form-control" id="inputLocation4" placeholder="Location">
+								</div>
+								<div class="form-group col-md-2">
+
+									<button type="submit" class="btn btn-primary">Search Now</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
 	<!-- Mansagens -->
