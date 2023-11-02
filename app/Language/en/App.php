@@ -36,7 +36,7 @@ return [
             'adverts'               => 'Adverts',
         ],
         'dashboard' => [
-            'dashboard'             => 'Main',
+            'dashboard'             => 'Home',
             'my_adverts'            => 'My ads',
             'my_plan'               => 'My plan',
             'user_since'            => 'He\'s been with us since',

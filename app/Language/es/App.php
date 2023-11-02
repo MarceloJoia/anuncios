@@ -32,14 +32,14 @@ return [
 
         'manager' => [
 
-            'home'          => 'Casa',
+            'home'          => 'A casa',
             'categories'    => 'Categorías',
             'plans'           => 'Planes de suscripción',
             'adverts'         => 'Anuncios',
 
         ],
         'dashboard' => [
-            'dashboard'        => 'Dashboard',
+            'dashboard'        => 'A casa',
             'my_adverts'       => 'Mis anuncios',
             'my_plan'          => 'Mi plano',
             'user_since'       => 'Ha estado con nosotros desde ',

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 	<meta charset="UTF-8">
@@ -9,17 +9,14 @@
 	<link rel="shortcut icon" type="image/png" href="/favicon.ico" />
 
 	<!-- STYLES -->
-
 	<style {csp-style-nonce}>
 		* {
 			transition: background-color 300ms ease, color 300ms ease;
 		}
-
 		*:focus {
 			background-color: rgba(221, 72, 20, .2);
 			outline: none;
 		}
-
 		html,
 		body {
 			color: rgba(33, 37, 41, 1);

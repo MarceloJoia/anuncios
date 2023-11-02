@@ -30,18 +30,15 @@ return [
 
 
     'sidebar' => [
-
         'manager' => [
-
             'home'                  => 'Principal',
             'categories'            => 'Categorias',
             'plans'                 => 'Planos',
             'adverts'               => 'Anúncios',
 
         ],
-
         'dashboard' => [
-            'dashboard'             => 'Principal',
+            'dashboard'             => 'Home',
             'my_adverts'            => 'Meus anúncios',
             'my_plan'               => 'Meu plano',
             'user_since'            => 'Está conosco desde ',

@@ -2,20 +2,18 @@
 <html lang="pt-br">
 
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="author" content="Marcelo Joia" />
 	<meta name="<?php echo csrf_token(); ?>" content="<?php echo csrf_hash(); ?>" class="csrf" />
-	<title><?php echo $this->renderSection('title', true) ?> :: <?php echo env('APP_NAME'); ?></title>
+	<title><?php echo $this->renderSection('title'); ?> :: <?php echo env('APP_NAME'); ?></title>
 	<!-- Icons Bootstrap -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="<?php echo site_url('manager_assets/assets/favicon.ico'); ?>" />
 
-	<!-- PLUGINS CSS STYLE -->
-	<link href="<?php echo site_url('web/'); ?>plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<!-- Bootstrap -->
 	<link href="<?php echo site_url('web/'); ?>plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
@@ -27,18 +25,14 @@
 	<link href="<?php echo site_url('web/'); ?>plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
 	<link href="<?php echo site_url('web/'); ?>plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 	<link href="<?php echo site_url('web/'); ?>plugins/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
+
+	<!-- Para o autocomplete -->
+	<link rel="stylesheet" href="<?php echo site_url('web/auto-complete/jquery-ui.min.css'); ?>" />
+
 	<!-- CUSTOM CSS -->
 	<link href="<?php echo site_url('web/'); ?>css/style.css" rel="stylesheet">
 	<!-- toastr CSS -->
 	<link href="<?php echo site_url('manager_assets/toastr/toastr.min.css'); ?>" rel="stylesheet" />
-
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
 	<style>
 		.btn-sm {
@@ -46,6 +40,25 @@
 			font-size: .875rem;
 			line-height: 1.5;
 			border-radius: .2rem;
+		}
+
+		.img-custom {
+			max-width: 60% !important;
+		}
+
+		/* Muda o backgroud do autocomplete */
+		.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+			background: #fff !important;
+			color: #007bff !important;
+			border: none;
+
+		}
+
+		/**
+         * Para a imagem do autocomplete
+         */
+		.image-autocomplete {
+			max-width: 80px !important;
 		}
 	</style>
 
@@ -60,21 +73,22 @@
 				<div class="col-md-12">
 					<nav class="navbar navbar-expand-lg  navigation">
 						<a class="navbar-brand" href="index.html">
-							<img src="images/logo.png" alt="">
+							<img src="<?php echo site_url('web/'); ?>images/logo.png" alt="">
 						</a>
+
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
+							<i style="font-size:2.2rem;" class="bi bi-list"></i>
 						</button>
+
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto main-nav ">
-
 
 								<li class="nav-item active">
 									<a class="nav-link" href="<?php echo route_to('web.home'); ?>">Home</a>
 								</li>
 
 								<li class="nav-item">
-									<a class="nav-link" href="<?php echo route_to('pricing'); ?>">Nossos Planos</a>
+									<a class="nav-link" href="<?php echo route_to('pricing'); ?>"><?php echo lang('App.sidebar.manager.plans'); ?></a>
 								</li>
 
 								<?php if (auth()->check()) : ?>
@@ -196,7 +210,7 @@
 					<!-- About -->
 					<div class="block about">
 						<!-- footer logo -->
-						<img src="images/logo-footer.png" alt="">
+						<img src="<?php echo site_url('web/'); ?>images/logo-footer.png" alt="">
 						<!-- description -->
 						<p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 					</div>
@@ -233,7 +247,7 @@
 					<div class="block-2 app-promotion">
 						<a href="">
 							<!-- Icon -->
-							<img src="images/footer/phone-icon.png" alt="mobile-icon">
+							<img src="<?php echo site_url('web/'); ?>images/footer/phone-icon.png" alt="mobile-icon">
 						</a>
 						<p>Get the Dealsy Mobile App and Save more</p>
 					</div>

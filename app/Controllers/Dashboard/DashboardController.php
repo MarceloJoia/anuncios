@@ -10,4 +10,6 @@ class DashboardController extends BaseController
     {
         return view('Dashboard/Home/index');
     }
+
+
 }

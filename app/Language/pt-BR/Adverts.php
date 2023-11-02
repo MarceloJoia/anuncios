@@ -3,7 +3,7 @@
 return [
 
     // texts
-    'title_index'                   => 'Listando os Anúncios',
+    'title_index'                   => 'Lista de Anúncios',
     'title_new'                     => 'Criar Anúncio',
     'title_edit'                    => 'Editar Anúncio',
     'text_is_published'             => 'Anúncio publicado',

@@ -1,7 +1,7 @@
 <?php echo $this->extend('Dashboard/Layout/main'); ?>
 
 <?= $this->section('title') ?>
-<?php echo $title ?? ''; ?>
+<?php echo lang('Adverts.title_index'); ?>
 <?= $this->endSection() ?>
 
 
