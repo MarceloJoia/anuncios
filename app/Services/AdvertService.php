@@ -268,17 +268,16 @@ class AdvertService
     // }
 
 
-    // public function getAdvertByID(int $id, bool $withDeleted = false)
-    // {
-    //     $advert = $this->advertModel->getAdvertByID($id, $withDeleted);
+    public function getAdvertByID(int $id, bool $withDeleted = false)
+    {
+        $advert = $this->advertModel->getAdvertByID($id, $withDeleted);
 
-    //     if (is_null($advert)) {
+        if (is_null($advert)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Advert not found');
+        }
 
-    //         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Advert not found');
-    //     }
-
-    //     return $advert;
-    // }
+        return $advert;
+    }
 
 
     // public function getDropdownSituations(string $advertSituation = null)

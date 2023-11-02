@@ -133,4 +133,56 @@ class AdvertModel extends MyBaseModel
 
         return $builder->findAll();
     }
+
+
+    /**
+     * Recupera o anúncio de acordo com o id.
+     *
+     * @param integer $id
+     * @param boolean $withDeleted
+     * @return object|null
+     */
+    public function getAdvertByID(int $id, bool $withDeleted = false)
+    {
+
+        $builder = $this;
+
+        $tableFields = [
+            'adverts.*',
+            'users.email', // para notificarmos o usuário/anunciante
+        ];
+
+        $builder->select($tableFields);
+        $builder->withDeleted($withDeleted);
+
+        // Quem está logado é o manager?
+        if (!$this->user->isSuperadmin()) {
+            // É o usuário anunciante.... então recuperamos apenas os anúncios dele
+            $builder->where('adverts.user_id', $this->user->id);
+        }
+
+        $builder->join('users', 'users.id = adverts.user_id');
+
+        $advert = $builder->find($id);
+
+        // Foi encontrado um anúncio?
+        if (!is_null($advert)) {
+            // Sim... então podemos buscar as imagens do mesmo
+            $advert->images = $this->getAdvertImages($advert->id);
+        }
+
+        // Retornamos o anúncio que pode ou não ter imagens
+        return $advert;
+    }
+
+    /**
+     * Recupera a image do anúncio
+     *
+     * @param integer $advertID
+     * @return array
+     */
+    public function getAdvertImages(int $advertID): array
+    {
+        return $this->db->table('adverts_images')->where('advert_id', $advertID)->get()->getResult();
+    }
 }

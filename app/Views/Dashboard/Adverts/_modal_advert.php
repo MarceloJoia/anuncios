@@ -11,7 +11,7 @@
             <?php echo form_open(route_to('adverts.create.my'), ['id' => 'adverts-form'], ['id' => '']) ?>
             <div class="modal-body">
 
-                <!-- <div class="form-row">
+                <div class="form-row">
 
                     <div class="mb-3 form-group col-md-12">
                         <label for="title" class="form-label"><?php echo lang('Adverts.label_title'); ?></label>
@@ -93,13 +93,13 @@
 
                     </div>
 
-                </div> -->
+                </div>
 
             </div>
 
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm btn-main"><?php echo lang('Adverts.btn_send_for_approval'); ?></button>
-                <button type="button" class="btn btn-secondary btn-sm btn-main" data-dismiss="modal"><?php echo lang('App.btn_cancel'); ?></button>
+                <button type="submit" class="btn btn-primary btn-sm btn-main"><i class="bi bi-send"></i>&nbsp;<?php echo lang('Adverts.btn_send_for_approval'); ?></button>
+                <button type="button" class="btn btn-secondary btn-sm btn-main" data-dismiss="modal"><i class="bi bi-x-square"></i>&nbsp;<?php echo lang('App.btn_cancel'); ?></button>
             </div>
             
             <?php echo form_close(); ?>

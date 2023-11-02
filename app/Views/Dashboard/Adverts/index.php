@@ -99,7 +99,12 @@
 <!-- Data Table -->
 <script src="https://cdn.datatables.net/v/bs4/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
+<!-- Mascaras -->
+<script src="<?php echo site_url('manager_assets/mask/app.js'); ?>"></script>
+<script src="<?php echo site_url('manager_assets/mask/jquery.mask.min.js'); ?>"></script>
+
 <?php echo $this->include('Dashboard/Adverts/Scripts/_datatable_all'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_get_my_advert'); ?>
 <?php echo $this->include('Dashboard/Adverts/Scripts/_show_modal_to_create'); ?>
 
 

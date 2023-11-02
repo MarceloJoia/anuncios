@@ -66,32 +66,30 @@ class AdvertsUserController extends BaseController
     //     return $this->response->setJSON($response);
     // }
 
-    // public function getUserAdvert()
-    // {
-    //     if (!$this->request->isAJAX()) {
+    public function getUserAdvert()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
 
-    //         return redirect()->back();
-    //     }
+        $advert = $this->advertService->getAdvertByID($this->request->getGetPost('id'));
 
+    
+        $options = [
+            'class'         => 'form-control',
+            'placeholder'   => lang('Categories.label_choose_category'),
+            'selected'      => !(empty($advert->category_id)) ? $advert->category_id : ""
+        ];
 
-    //     $advert = $this->advertService->getAdvertByID($this->request->getGetPost('id'));
+        $response = [
+            'advert'        => $advert,
+            'situations'    => $this->advertService->getDropdownSituations($advert->situation),
+            'categories'    =>  $this->categoryService->getMultinivel('category_id', $options)
+        ];
 
+        return $this->response->setJSON($response);
+    }
 
-    //     $options = [
-    //         'class'         => 'form-control',
-    //         'placeholder'   => lang('Categories.label_choose_category'),
-    //         'selected'      => !(empty($advert->category_id)) ? $advert->category_id : ""
-    //     ];
-
-
-    //     $response = [
-    //         'advert'        => $advert,
-    //         'situations'    => $this->advertService->getDropdownSituations($advert->situation),
-    //         'categories'    =>  $this->categoryService->getMultinivel('category_id', $options)
-    //     ];
-
-    //     return $this->response->setJSON($response);
-    // }
 
     // public function createUserAdvert()
     // {

@@ -47,6 +47,7 @@ return [
     'label_status'          => 'Status',
     'label_zipcode'         => 'CEP do anúncio',
     'label_street'          => 'Endereço do anúncio',
+    'label_number'          => 'Número',
     'label_neighborhood'    => 'Bairro do anúncio',
     'label_city'            => 'Cidade do anúncio',
     'label_state'           => 'Estado do anúncio',
