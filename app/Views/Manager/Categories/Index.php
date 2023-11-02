@@ -31,6 +31,7 @@
                 </div>
 
                 <div class="card-body">
+
                     <a class="btn btn-primary btn-sm mt-2 mb-4" href="<?php echo route_to('categories.archived'); ?>"><i class="bi bi-archive"></i>&nbsp;<?php echo lang('App.btn_all_archived'); ?></a>
 
                     <table class="table table-borderless table-striped" id="dataTable">
