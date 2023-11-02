@@ -10,8 +10,27 @@
 <link href="https://cdn.datatables.net/v/bs4/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
 
 <style>
+	/**
+     * Para acompanhar o estilo dos inputs
+     */
+	select {
+		height: 50px !important;
+	}
+
 	#dataTable_filter .form-control {
 		height: 30px !important;
+	}
+
+
+	/**
+     * Criamos a classe .modal-xl que não tem nessa versão do bootstrap do template
+     */
+	@media (min-width: 1200px) {
+
+		.modal-xl {
+
+			max-width: 1140px;
+		}
 	}
 </style>
 
@@ -62,16 +81,15 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 			</div>
 		</div>
 		<!-- Row End -->
 	</div>
 	<!-- Container End -->
 </section>
+
+<!-- Model Adverts -->
+<?php echo $this->include('Dashboard/Adverts/_modal_advert'); ?>
 
 <?= $this->endSection() ?>
 
@@ -82,6 +100,8 @@
 <script src="https://cdn.datatables.net/v/bs4/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
 <?php echo $this->include('Dashboard/Adverts/Scripts/_datatable_all'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_show_modal_to_create'); ?>
+
 
 <script>
 	function refreshCSRFToken(token) {
