@@ -22,6 +22,6 @@ if (file_exists($api = ROOTPATH . 'routes/api.php')) {
 \Fluent\Auth\Facades\Auth::routes();
 ///// REMOVER ISSO
 $routes->group('dashboard', ['filter' => 'auth:web'], function ($routes) {
-    $routes->get('/', 'Home::dashboard', ['filter' => 'verified']);
-    $routes->get('confirm', 'Home::confirm', ['filter' => 'confirm']);
+    $routes->get('/', 'HomeController::dashboard', ['filter' => 'verified']);
+    $routes->get('confirm', 'HomeController::confirm', ['filter' => 'confirm']);
 });

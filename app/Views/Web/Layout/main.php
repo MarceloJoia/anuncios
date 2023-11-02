@@ -58,13 +58,31 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto main-nav ">
+                            <ul class="navbar-nav ml-auto main-nav">
+
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home</a>
+                                    <a class="nav-link" href="<?php echo  route_to('web.home'); ?>">Home</a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                                    <a class="nav-link" href="<?php echo  route_to('pricing'); ?>">Nossos Planos</a>
                                 </li>
+
+                                <?php if (auth()->check()) : ?>
+
+                                    <?php if (auth()->user()->isSuperadmin()) : ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo  route_to('dashboard'); ?>">Dashboard</a>
+                                        </li>
+                                    <?php else : ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo  route_to('manager'); ?>">Manager</a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                <?php endif; ?>
+
+
                                 <li class="nav-item dropdown dropdown-slide">
                                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Pages <span><i class="fa fa-angle-down"></i></span>
@@ -93,14 +111,25 @@
                                     </div>
                                 </li>
                             </ul>
+
                             <ul class="navbar-nav ml-auto mt-10">
+
+                                <?php if (!auth()->check()) : ?>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link login-button" href="<?php echo  route_to('login'); ?>">Login</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link login-button" href="<?php echo  route_to('register'); ?>">Registrar-se</a>
+                                    </li>
+
+                                <?php endif; ?>
+
                                 <li class="nav-item">
-                                    <a class="nav-link login-button" href="index.html">Login</a>
+                                    <a class="nav-link add-button" href="<?php echo  route_to('dashboard'); ?>"><i class="fa fa-plus-circle"></i> Criar anúncio</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Add
-                                        Listing</a>
-                                </li>
+
                             </ul>
                         </div>
                     </nav>
