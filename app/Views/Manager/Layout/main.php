@@ -17,8 +17,6 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?php echo site_url('manager_assets/css/styles.css'); ?>" rel="stylesheet" />
 
-    <!-- toastr CSS -->
-    <link href="<?php echo site_url('manager_assets/toastr/toastr.min.css'); ?>" rel="stylesheet" />
 
     <style>
         /**
@@ -40,6 +38,9 @@
             max-width: 50% !important;
         }
     </style>
+    
+    <!-- toastr CSS -->
+    <link href="<?php echo site_url('manager_assets/toastr/toastr.min.css'); ?>" rel="stylesheet" />
 
     <?php echo $this->renderSection('styles'); ?>
 </head>
