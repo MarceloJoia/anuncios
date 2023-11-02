@@ -280,40 +280,35 @@ class AdvertService
     }
 
 
-    // public function getDropdownSituations(string $advertSituation = null)
-    // {
-    //     $options    = [];
-    //     $selected   = [];
 
-    //     $options = [
-    //         ''                     => lang('Adverts.label_situation'), // option vazio
-    //         self::SITUATION_NEW    => lang('Adverts.text_new'),
-    //         self::SITUATION_USED   => lang('Adverts.text_used'),
-    //     ];
+    public function getDropdownSituations(string $advertSituation = null)
+    {
+        $options    = [];
+        $selected   = [];
 
+        $options = [
+            ''                     => lang('Adverts.label_situation'), // option vazio
+            self::SITUATION_NEW    => lang('Adverts.text_new'),
+            self::SITUATION_USED   => lang('Adverts.text_used'),
+        ];
 
-    //     // Estamos criando ou editando um anúncio?
-    //     if (is_null($advertSituation)) {
+        // Estamos criando ou editando um anúncio?
+        if (is_null($advertSituation)) {
+            // Estamos criando...
+            return form_dropdown('situation', $options, $selected, ['class' => 'form-control']);
+        }
 
-    //         // Estamos criando...
+        // Estamos editando um anúncio...
+        $selected[] = match ($advertSituation) {
+            self::SITUATION_NEW         => self::SITUATION_NEW,
+            self::SITUATION_USED        => self::SITUATION_USED,
+            default                     => throw new \Exception("Unsupported {$advertSituation}"),
+        };
 
-    //         return form_dropdown('situation', $options, $selected, ['class' => 'form-control']);
-    //     }
+        return form_dropdown('situation', $options, $selected, ['class' => 'form-control']);
+    }
 
-
-    //     // Estamos editando um anúncio...
-
-    //     $selected[] = match ($advertSituation) {
-
-    //         self::SITUATION_NEW         => self::SITUATION_NEW,
-    //         self::SITUATION_USED        => self::SITUATION_USED,
-
-    //         default                     => throw new \Exception("Unsupported {$advertSituation}"),
-    //     };
-
-    //     return form_dropdown('situation', $options, $selected, ['class' => 'form-control']);
-    // }
-
+    
 
     // public function trySaveAdvert(Advert $advert, bool $protect = true, bool $notifyUserIfPublished = false)
     // {
