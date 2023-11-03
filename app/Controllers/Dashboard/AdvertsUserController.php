@@ -76,6 +76,17 @@ class AdvertsUserController extends BaseController
 
 
     
+    public function createUserAdvert()
+    {
+        $this->advertRequest->validateBeforeSave('advert');
+        
+        $this->advertService->trySaveAdvert(new  Advert($this->removeSpoofingFromRequest()));
+
+        return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_saved')));
+    }
+    
+
+    
     public function updateUserAdvert()
     {
         $this->advertRequest->validateBeforeSave('advert');
