@@ -28,16 +28,11 @@ class AdvertsUserController extends BaseController
     public function index()
     {
         // dd($this->advertService->getAllAdverts());
-        d(get_superadmin());
+        // d(get_superadmin());
 
         return view('Dashboard/Adverts/index');
     }
 
-
-    // public function archived()
-    // {
-    //     return view('Dashboard/Adverts/archived');
-    // }
 
     public function getUserAdverts()
     {
@@ -52,20 +47,6 @@ class AdvertsUserController extends BaseController
         return $this->response->setJSON($response);
     }
 
-
-    // public function getUserArchivedAdverts()
-    // {
-    //     if (!$this->request->isAJAX()) {
-
-    //         return redirect()->back();
-    //     }
-
-    //     $response = [
-    //         'data' => $this->advertService->getArchivedAdverts(classBtnActions: 'btn btn-sm btn-outline-info'),
-    //     ];
-
-    //     return $this->response->setJSON($response);
-    // }
 
     public function getUserAdvert()
     {
@@ -92,15 +73,6 @@ class AdvertsUserController extends BaseController
     }
 
 
-    // public function createUserAdvert()
-    // {
-    //     $this->advertRequest->validateBeforeSave('advert');
-
-    //     $this->advertService->trySaveAdvert(new Advert($this->removeSpoofingFromRequest()));
-
-    //     return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_saved')));
-    // }
-
 
     public function updateUserAdvert()
     {
@@ -119,102 +91,4 @@ class AdvertsUserController extends BaseController
         return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_saved')));
     }
 
-
-    // public function getCategoriesAndSituations()
-    // {
-    //     if (!$this->request->isAJAX()) {
-
-    //         return redirect()->back();
-    //     }
-
-
-    //     $options = [
-    //         'class'         => 'form-control',
-    //         'placeholder'   => lang('Categories.label_choose_category'),
-    //         'selected'      => ""
-    //     ];
-
-
-    //     $response = [
-    //         'situations'    => $this->advertService->getDropdownSituations(),
-    //         'categories'    =>  $this->categoryService->getMultinivel('category_id', $options)
-    //     ];
-
-    //     return $this->response->setJSON($response);
-    // }
-
-
-    // public function editUserAdvertImages(int $id = null)
-    // {
-    //     $data = [
-    //         'advert'            => $advert = $this->advertService->getAdvertByID($id),
-    //         'hiddens'           => ['_method' => 'PUT'], // Para o upload de imagens (editando um anúncio)
-    //         'hiddensDelete'     => ['id' => $advert->id, '_method' => 'DELETE'], // Para remover as imagens do anúncio 
-    //     ];
-
-    //     return view('Dashboard/Adverts/edit_images', $data);
-    // }
-
-
-    // public function uploadAdvertImages(int $id = null)
-    // {
-    //     $this->advertRequest->validateBeforeSave('advert_images', respondWithRedirect: true);
-
-    //     $this->advertService->tryStoreAdvertImages($this->request->getFiles('images'), $id);
-
-    //     return redirect()->back()->with('success', lang('App.success_saved'));
-    // }
-
-
-    // public function deleteUserAdvertImage(string $image = null)
-    // {
-    //     $this->advertService->tryDeleteAdvertImage($this->request->getGetPost('id'), $image);
-
-    //     return redirect()->back()->with('success', lang('App.success_deleted'));
-    // }
-
-
-    // public function archiveUserAdvert()
-    // {
-    //     $this->advertService->tryArchiveAdvert($this->request->getGetPost('id'));
-
-    //     return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_archived')));
-    // }
-
-    // public function recoverUserAdvert()
-    // {
-    //     $this->advertService->tryRecoverAdvert($this->request->getGetPost('id'));
-
-    //     return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_recovered')));
-    // }
-
-
-    // public function deleteUserAdvert()
-    // {
-    //     $this->advertService->tryDeleteAdvert($this->request->getGetPost('id'));
-
-    //     return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_deleted')));
-    // }
-
-    // public function userAdvertQuestions(string $code = null)
-    // {
-    //     $data = [
-    //         'advert'            => $advert = $this->advertService->getAdvertByCode(code: $code, ofTheLoggedInUser: true),
-    //         'hiddens'           => ['_method' => 'PUT', 'code' => $advert->code], // para responder as perguntas
-    //     ];
-
-    //     return view('Dashboard/Adverts/questions', $data);
-    // }
-
-
-    // public function userAdvertAnswerQuestions(int $questionID = null)
-    // {
-    //     $request = (object) $this->removeSpoofingFromRequest();
-
-    //     $advert = $this->advertService->getAdvertByCode(code: $request->code, ofTheLoggedInUser: true);
-
-    //     $this->advertService->tryAnswerAdvertQuestion(questionID: $questionID, advert: $advert, request: $request);
-
-    //     return redirect()->back()->with('success', lang('App.success_saved'));
-    // }
 }

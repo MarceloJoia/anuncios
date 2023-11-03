@@ -67,7 +67,8 @@ class Advert extends Entity
 
     public function isPublished()
     {
-        return 'Publiacado ou não';
+        return $this->attributes['is_published'] ? '<span class="status-btn active-btn">' . lang('Adverts.text_is_published') . '</span>' :
+            '<span class="status-btn close-btn">' . lang('Adverts.text_under_analysis') . '</span>';
     }
 
     public function address()

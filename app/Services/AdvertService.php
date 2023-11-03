@@ -223,12 +223,49 @@ class AdvertService
             $advert->unsetAuxiliaryAttributes();
             if ($advert->hasChanged()) {
                 $this->advertModel->trySaveAdvert($advert, $protect);
-                /** @todo Disparar evento de notificação para o anunciante e para o manager */
-                // $this->fireAdvertEvents($advert, $notifyUserIfPublished);
+
+                /** Disparar evento de notificação para o anunciante e para o manager */
+                $this->fireAdvertEvents($advert, $notifyUserIfPublished);
             }
         } catch (\Exception $e) {
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);
             die('Error saving data');
         }
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //--------------------Métodos privados------------------------//
+    private function fireAdvertEvents(Advert $advert, bool $notifyUserIfPublished)
+    {
+        /** Se estiver sendo editado, então o email já possui valor quando da recuperação do mesmo da base.
+         *  Se não tem valor, então estamos criando novo anúncio, portanto, recebe o e-mail do user logado */
+        $advert->email = !empty($advert->email) ? $advert->email : $this->user->email;
+
+        if ($advert->hasChanged('title') || $advert->hasChanged('description')) {
+
+            Events::trigger('notify_user_advert', $advert->email, "Estamos analisando o seu anúncio Nº: {$advert->code}... Assim que aprovado, você será notificado.");
+            Events::trigger('notify_manager', "Existem anúncios para serem auditados.");
+        }
+
+        /** @todo Notifica a publicação do anúnico para  Usuário */
+    }
+
+
+    /**
+     * Dispara um evento quando estiver Editando uma imagem do anúncio
+     *
+     * @param Advert $advert
+     * @return void
+     */
+    private function fireAdvertEventForNewImages(Advert $advert)
+    {
+        /** Se estiver sendo editado, então o email já possui valor quando da recuperação do mesmo da base.
+         * Se não tem valor, então estamos criando novo anúncio, portanto, recebe o e-mail do user logado */
+        $advert->email = !empty($advert->email) ? $advert->email : $this->user->email;
+
+        Events::trigger('notify_user_advert', $advert->email, "Estamos analisando as novas imagens do seu anúncio {$advert->code}... Assim que aprovado você será notificado");
+        Events::trigger('notify_manager', "Existem anúncios para serem auditados... Novas imagens foram inseridas. Por favor acesse o Vem Pro Bairro para a moderação do conteúdo.");
     }
 }

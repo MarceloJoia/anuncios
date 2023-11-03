@@ -63,3 +63,16 @@ Events::on(\Fluent\Auth\Contracts\VerifyEmailInterface::class, function ($email)
 Events::on(\Fluent\Auth\Contracts\ResetPasswordInterface::class, function ($email, $token) {
     (new \App\Notifications\ResetPasswordNotification($email, $token))->send();
 });
+
+
+// Meus eventos
+/** Diospara o email */
+Events::on('notify_user_advert', function ($email, $message) {
+    (new \App\Notifications\UserAdvertNotification($email, $message))->send();
+});
+
+/** Recebe a mensagem a ser enviada */
+Events::on('notify_manager', function ($message) {
+    (new \App\Notifications\ManagerNotification($message))->send();
+});
+
