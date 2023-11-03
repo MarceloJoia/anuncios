@@ -10,18 +10,17 @@
         $('#adverts-form').attr('action', '<?php echo route_to('adverts.create.my'); ?>');
         $('#adverts-form').find('span.error-text').text('');
 
-        // var url = '<?php //echo route_to('get.categories.situations'); 
-                        ?>';
+        var url = '<?php echo route_to('get.categories.situations'); ?>';
 
-        // $.get(url, function(response) {
+        $.get(url, function(response) {
 
-        //     $('#boxSituations').html(response.situations);
-        //     $('#boxCategories').html(response.categories);
+            $('#boxSituations').html(response.situations);
+            $('#boxCategories').html(response.categories);
 
-        // }, 'json').fail(function() {
+        }, 'json').fail(function() {
 
-        //     toastr.error("We couldn't find the ad");
-        // });
+            toastr.error("We couldn't find the ad");
+        });
 
     });
 </script>
