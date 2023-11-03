@@ -62,4 +62,14 @@ class UserModel extends Model implements UserProviderInterface
             'password' => 'secret',
         ];
     }
+
+    /**
+     * Retorna todos os atributos a tabela de user e retorna um super admin
+     *
+     * @return void
+     */
+    public function getSuperadmin()
+    {
+        return $this->join('superadmins', 'superadmins.user_id = users.id')->first();
+    }
 }

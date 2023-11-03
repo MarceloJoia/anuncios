@@ -50,11 +50,14 @@ return [
     'label_number'          => 'Número',
     'label_neighborhood'    => 'Bairro do anúncio',
     'label_city'            => 'Cidade do anúncio',
-    'label_state'           => 'Estado do anúncio',
+    'label_state'           => 'Estado/UF',
 
 
     // Validation messages
     'title'        => [
+        'required' => 'Digite o nome do produto',
+        'min_length' => 'Digite 3 caracteres no mínimo!',
+        'max_length' => 'O máximo suportado é 90 caracteres',
         'is_unique' => 'Esse Título já existe. Por favor escolha outro.',
     ],
 

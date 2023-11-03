@@ -84,6 +84,72 @@ class Validation extends BaseConfig
         'description' => [
             'required'      => 'Plans.description.required',
         ],
+    ];
+
+
+
+    
+    //--------------------------------------------------------------------
+    // Adverts
+    //--------------------------------------------------------------------
+    public $advert = [
+        'id'                => 'permit_empty|is_natural_no_zero',
+        'title'             => 'required|min_length[3]|max_length[125]|is_unique[adverts.title,id,{id}]',
+        'situation'         => 'required|in_list[new,used]',
+        'category_id'       => 'required|is_not_unique[categories.id]',
+        'price'             => 'required',
+        'description'       => 'required|max_length[5000]',
+        'zipcode'           => 'required|exact_length[9]',
+        'street'            => 'required|max_length[137]',
+        'neighborhood'      => 'required|max_length[137]',
+        'city'              => 'required|max_length[137]',
+        'state'             => 'required|exact_length[2]',
+    ];
+
+    public $advert_errors = [
+        'title' => [
+            'required'      => 'Adverts.title.required',
+            'min_length'    => 'Adverts.title.min_length',
+            'max_length'    => 'Adverts.title.max_length',
+            'is_unique'     => 'Adverts.title.is_unique',
+        ],
+        'situation' => [
+            'required'     => 'Qual é a situação do produto?',
+        ],
+        'category_id' => [
+            'required' => 'Por favor escolha a Categoria',
+        ],
+        'price' => [
+            'required' => 'Digite um valor para o produto',
+        ],
+        'description' => [
+            'required' => 'O produto precisa de uma descrição',
+        ],
+    ];
+
+
+    public $advert_images = [
+        'images' => [
+            'uploaded[images]',
+            'is_image[images]',
+            'mime_in[images,image/jpg,image/jpeg,image/png,image/webp]',
+            'max_size[images,2048]',
+            'max_dims[images,1920,1080]',
+        ],
+    ];
+
+    // Podemos traduzir as mensagens de erro aqui!
+    public $advert_images_error = [
 
     ];
+
+
+
+
+
+
+
+
+
+
 }
