@@ -100,6 +100,7 @@
 <?php echo $this->include('Dashboard/Adverts/Scripts/_get_my_advert'); ?>
 <?php echo $this->include('Dashboard/Adverts/Scripts/_show_modal_to_create'); ?>
 <?php echo $this->include('Dashboard/Adverts/Scripts/_submit_modal_create_update'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_viacep'); ?>
 
 
 <script>

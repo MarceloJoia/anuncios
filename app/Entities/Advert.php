@@ -71,8 +71,15 @@ class Advert extends Entity
             '<span class="status-btn close-btn">' . lang('Adverts.text_under_analysis') . '</span>';
     }
 
+
+    /**
+     * Retorna o endereço formatado
+     *
+     * @return void
+     */
     public function address()
     {
-        return 'Enereço do anúncio';
+        $number = !empty($this->attributes['number']) ? $this->attributes['number'] : 'N/A';
+        return "{$this->attributes['street']} Nº {$number}, {$this->attributes['neighborhood']} CEP: {$this->attributes['zipcode']} - {$this->attributes['city']}/{$this->attributes['state']}";
     }
 }
