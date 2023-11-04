@@ -234,6 +234,25 @@ class AdvertService
     }
 
 
+    public function tryStoreAdvertImages(array $images, int $advertID)
+    {
+        try {
+            $advert = $this->getAdvertByID($advertID);
+
+            $dataImages = ImageService::storeImages($images, 'adverts', 'advert_id', $advert->id);
+
+            $this->advertModel->tryStoreAdvertImages($dataImages, $advert->id);
+
+            $this->fireAdvertEventForNewImages($advert);
+
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Error saving data');
+        }
+    }
+
+
+
 
     ////////////////////////////////////////////////////////////////
     //--------------------Métodos privados------------------------//
@@ -253,19 +272,19 @@ class AdvertService
     }
 
 
-    // /**
-    //  * Dispara um evento quando estiver Editando uma imagem do anúncio
-    //  *
-    //  * @param Advert $advert
-    //  * @return void
-    //  */
-    // private function fireAdvertEventForNewImages(Advert $advert)
-    // {
-    //     /** Se estiver sendo editado, então o email já possui valor quando da recuperação do mesmo da base.
-    //      * Se não tem valor, então estamos criando novo anúncio, portanto, recebe o e-mail do user logado */
-    //     $advert->email = !empty($advert->email) ? $advert->email : $this->user->email;
+    /**
+     * Dispara um evento quando estiver Editando uma imagem do anúncio
+     *
+     * @param Advert $advert
+     * @return void
+     */
+    private function fireAdvertEventForNewImages(Advert $advert)
+    {
+        /** Se estiver sendo editado, então o email já possui valor quando da recuperação do mesmo da base.
+         * Se não tem valor, então estamos criando novo anúncio, portanto, recebe o e-mail do user logado */
+        $advert->email = !empty($advert->email) ? $advert->email : $this->user->email;
 
-    //     Events::trigger('notify_user_advert', $advert->email, "Estamos analisando as novas imagens do seu anúncio {$advert->code}... Assim que aprovado você será notificado");
-    //     Events::trigger('notify_manager', "Existem anúncios para serem auditados... Novas imagens foram inseridas. Por favor acesse o Vem Pro Bairro para a moderação do conteúdo.");
-    // }
+        Events::trigger('notify_user_advert', $advert->email, "Estamos analisando as novas imagens do seu anúncio {$advert->code}... Assim que aprovado você será notificado");
+        Events::trigger('notify_manager', "Existem anúncios para serem auditados... Novas imagens foram inseridas. Por favor acesse o Vem Pro Bairro para a moderação do conteúdo.");
+    }
 }

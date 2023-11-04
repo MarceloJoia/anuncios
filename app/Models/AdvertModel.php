@@ -218,4 +218,26 @@ class AdvertModel extends MyBaseModel
             die('Error saving data');
         }
     }
+
+    public function tryStoreAdvertImages(array $dataImages, int $advertID)
+    {
+        try {
+            $this->db->transStart();
+
+            $this->db->table('adverts_images')->insertBatch($dataImages);// Salva as imagens
+
+            $this->protect(false)->set('is_published', false)->where('id', $advertID)->update();// Despublica o Anúncio
+
+            $this->db->transComplete();
+        } catch (\Exception $e) {
+
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+
+            die('Error saving data');
+        }
+    }
+
+
+
+
 }
