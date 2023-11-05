@@ -29,6 +29,14 @@ class ImageService
     }
 
 
+    /**
+     * Retorna as imagens relacionadas ao anúncio
+     *
+     * @param string $imagePath
+     * @param string $image
+     * @param string $sizeImage
+     * @return void
+     */
     public static function showImage(string $imagePath, string $image, string $sizeImage = 'regular')
     {
         if ($sizeImage == 'small') {

@@ -28,3 +28,4 @@ if (file_exists($api = ROOTPATH . 'routes/api.php')) {
 \Fluent\Auth\Facades\Auth::routes();
 
 
+$routes->get('image/(:any)/(:any)', 'DetailsController::image/$1/$2', ['as' => 'web.image']);

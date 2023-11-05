@@ -168,6 +168,7 @@ class AdvertService
     }
 
 
+
     public function getAdvertByID(int $id, bool $withDeleted = false)
     {
         $advert = $this->advertModel->getAdvertByID($id, $withDeleted);
@@ -209,6 +210,7 @@ class AdvertService
     }
 
 
+
     /**
      * Disparar evento de notificação para o anunciante e para o manager avisando que existem anúncios para serem auditados
      *
@@ -234,6 +236,7 @@ class AdvertService
     }
 
 
+
     public function tryStoreAdvertImages(array $images, int $advertID)
     {
         try {
@@ -244,7 +247,6 @@ class AdvertService
             $this->advertModel->tryStoreAdvertImages($dataImages, $advert->id);
 
             $this->fireAdvertEventForNewImages($advert);
-
         } catch (\Exception $e) {
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);
             die('Error saving data');

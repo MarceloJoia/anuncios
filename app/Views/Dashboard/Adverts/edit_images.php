@@ -50,17 +50,44 @@
 					<i class="fa fa-image text-center"></i>
 					<input type="file" name="images[]" multiple accept="image/*" class="form-control-file d-inline" id="input-file">
 				</div>
-				
+
 				<!-- Submit button -->
 				<button type="submit" class="btn btn-transparent btn-sm"><?php echo lang('App.btn_save'); ?></button>
 				<?= form_close(); ?>
 
 			</div>
 
+			<div class="row">
 
+				<div class="col-md-12">
+
+					<?php if (empty($advert->images)) : ?>
+
+						<div class="alert alert-warning">
+							<?php echo lang('Adverts.text_no_images'); ?>
+						</div>
+
+					<?php else : ?>
+
+						<ul class="list-inline">
+							<?php foreach ($advert->images as $image) : ?>
+								<li class="list-inline-item">
+									<?php echo form_open(route_to('adverts.delete.image', $image->image), ['id' => 'formDelete'], $hiddensDelete); ?>
+
+									<button type="submit" class="btn bg-danger btn-main-sm d-block mx-auto mb-2"><i class="fa fa-trash fa-2x"></i></button>
+
+									<?php echo form_close(); ?>
+
+									<img class="img-fluid" width="100" src="<?php echo route_to('web.image', $image->image, 'small') ?>" alt="<?php echo $advert->title; ?>">
+								</li>
+							<?php endforeach; ?>
+						</ul>
+
+					<?php endif; ?>
+
+				</div>
+			</div>
 		</div>
-
-
 	</div>
 </div>
 
