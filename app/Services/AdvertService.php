@@ -153,8 +153,7 @@ class AdvertService
             $btnActions .= '</div>'; // Fechamento da div do dropdown
 
             $data[] = [
-                // 'image'        => $advert->image(classImage: 'card-img-top img-custom', sizeImage: $sizeImage),
-                'image'        => $advert->image(),
+                'image'        => $advert->image(classImage: 'card-img-top img-custom', sizeImage: $sizeImage),
                 'title'        => $advert->title,
                 'code'         => $advert->code,
                 'category'     => $advert->category,

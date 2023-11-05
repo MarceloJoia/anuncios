@@ -1,7 +1,7 @@
 <?php echo $this->extend('Dashboard/Layout/main'); ?>
 
 <?= $this->section('title') ?>
-<?php echo lang('Adverts.text_edit_images'); ?>
+<?php echo lang('Adverts.text_edit_images'); ?>:&nbsp;<?php echo $advert->title; ?>
 <?= $this->endSection() ?>
 
 
@@ -38,7 +38,7 @@
 			<!-- Edit Personal Info -->
 			<div class="widget personal-info ">
 
-				<h3 class="widget-header user"><?php echo lang('Adverts.text_edit_images'); ?></h3>
+				<h3 class="widget-header user"><?php echo lang('Adverts.text_edit_images'); ?>:&nbsp;<?php echo $advert->title; ?></h3>
 
 				<?= form_open_multipart(route_to('adverts.upload.my', $advert->id), hidden: $hiddens) ?>
 
@@ -96,5 +96,33 @@
 
 
 <?= $this->section('scripts') ?>
+<!-- Sweet Alert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Fim Sweet Alert2 -->
+
+<script>
+	$(document).on('click', '#formDelete', function(e) {
+
+		e.preventDefault();
+
+		let $form = $(this);
+
+		Swal.fire({
+			title: '<?php echo lang('App.delete_confirmation'); ?>',
+			text: '<?php echo lang('App.info_delete_confirmation'); ?>',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '<?php echo lang('App.btn_confirmed_delete'); ?>',
+			cancelButtonText: '<?php echo lang('App.btn_cancel'); ?>'
+		}).then((result) => {
+			//=> Se Foi clicado no botão confirma, executa o Request
+			if (result.isConfirmed) {
+				$form.submit();
+			}
+		})
+	});
+</script>
 
 <?= $this->endSection(); ?>

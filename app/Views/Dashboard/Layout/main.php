@@ -60,6 +60,11 @@
 		.image-autocomplete {
 			max-width: 80px !important;
 		}
+
+		/** Tamenho da miniatura da imagem  */
+		.img-custom {
+			max-width: 70px !important;
+		}
 	</style>
 
 	<?php echo $this->renderSection('styles'); ?>
