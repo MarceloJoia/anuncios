@@ -17,5 +17,7 @@ $routes->group('{locale}/dashboard', ['namespace' => 'App\Controllers\Dashboard'
 
         $routes->put('update', 'AdvertsUserController::updateUserAdvert', ['as' => 'adverts.update.my']);
         $routes->put('upload/(:num)', 'AdvertsUserController::uploadAdvertImages/$1', ['as' => 'adverts.upload.my']);
+        
+        $routes->delete('delete-image/(:any)', 'AdvertsUserController::deleteUserAdvertImage/$1', ['as' => 'adverts.delete.image']);
     });
 });

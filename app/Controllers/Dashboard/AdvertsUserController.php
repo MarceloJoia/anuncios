@@ -153,4 +153,13 @@ class AdvertsUserController extends BaseController
 
         return redirect()->back()->with('success', lang('App.success_saved'));
     }
+
+
+    public function deleteUserAdvertImage(string $image = null)
+    {
+        $this->advertService->tryDeleteAdvertImage($this->request->getGetPost('id'), $image);
+
+        return redirect()->back()->with('success', lang('App.success_deleted'));
+    }
+
 }

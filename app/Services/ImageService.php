@@ -59,6 +59,13 @@ class ImageService
     }
 
 
+    /**
+     * Deleta a imagem do diretorio Uploads
+     *
+     * @param string $pathToImage
+     * @param string $imageToDestroy
+     * @return void
+     */
     public static function destroyImage(string $pathToImage, string $imageToDestroy)
     {
         $regularImageToDestroy  = WRITEPATH . "uploads/{$pathToImage}/{$imageToDestroy}";

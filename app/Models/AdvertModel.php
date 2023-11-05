@@ -224,9 +224,9 @@ class AdvertModel extends MyBaseModel
         try {
             $this->db->transStart();
 
-            $this->db->table('adverts_images')->insertBatch($dataImages);// Salva as imagens
+            $this->db->table('adverts_images')->insertBatch($dataImages); // Salva as imagens
 
-            $this->protect(false)->set('is_published', false)->where('id', $advertID)->update();// Despublica o Anúncio
+            $this->protect(false)->set('is_published', false)->where('id', $advertID)->update(); // Despublica o Anúncio
 
             $this->db->transComplete();
         } catch (\Exception $e) {
@@ -238,6 +238,13 @@ class AdvertModel extends MyBaseModel
     }
 
 
+    public function tryDeleteAdvertImage(int $advertID, string $image)
+    {
+        $criteria = [
+            'advert_id' => $advertID,
+            'image'     => $image
+        ];
 
-
+        return $this->db->table('adverts_images')->where($criteria)->delete();
+    }
 }

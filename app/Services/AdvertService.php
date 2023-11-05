@@ -254,6 +254,28 @@ class AdvertService
     }
 
 
+    /**
+     * Exclui o registro da base de dados e chama o metodo quedestroi o arquivo do diretorio Uploads
+     *
+     * @param integer $advertID
+     * @param string $image
+     * @return void
+     */
+    public function tryDeleteAdvertImage(int $advertID, string $image)
+    {
+        try {
+            $advert = $this->getAdvertByID($advertID);
+
+            $this->advertModel->tryDeleteAdvertImage($advert->id, $image);
+
+            ImageService::destroyImage('adverts', $image);
+        } catch (\Exception $e) {
+
+            die('Error deleting data');
+        }
+    }
+
+
 
 
     ////////////////////////////////////////////////////////////////
