@@ -195,6 +195,17 @@ class PlanService
         }
     }
 
+    /**
+     * Retorna todos os planos menos os arquivados
+     *
+     * @return void
+     */
+    public function getPlansToSell()
+    {
+        return $this->planModel->findAll();
+    }
+
+
     private function createOrUpdatePlanOnGerencianet(Plan $plan)
     {
         // Estamos criando um plano?

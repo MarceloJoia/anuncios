@@ -59,11 +59,11 @@
                             <ul class="navbar-nav ml-auto main-nav">
 
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="<?php echo route_to('web.home'); ?>">Home</a>
+                                    <a class="nav-link" href="<?php echo route_to('web.home'); ?>"><i class="bi bi-house-fill"></i>&nbsp;Home</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo route_to('pricing'); ?>">Nossos Planos</a>
+                                    <a class="nav-link" href="<?php echo route_to('pricing'); ?>"><i class="bi bi-briefcase-fill"></i>&nbsp;Nossos Planos</a>
                                 </li>
 
                                 <?php if (auth()->check()) : ?>
@@ -215,7 +215,7 @@
 =            Popular deals section            =
 ============================================-->
 
-    <section class="popular-deals section bg-gray">
+    <!-- <section class="popular-deals section bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -226,15 +226,16 @@
                 </div>
             </div>
             <div class="row">
-                <!-- offer 01 -->
+                
                 <div class="col-sm-12 col-lg-4">
-                    <!-- product card -->
+                    
                     <div class="product-item bg-light">
                         <div class="card">
                             <div class="thumb-content">
-                                <!-- <div class="price">$200</div> -->
+                              
                                 <a href="">
-                                    <img class="card-img-top img-fluid" src="<?php echo site_url('web/'); ?>images/products/products-1.jpg" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="<?php //echo site_url('web/'); 
+                                                                                ?>images/products/products-1.jpg" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -266,13 +267,14 @@
 
                 </div>
                 <div class="col-sm-12 col-lg-4">
-                    <!-- product card -->
+                    
                     <div class="product-item bg-light">
                         <div class="card">
                             <div class="thumb-content">
-                                <!-- <div class="price">$200</div> -->
+                               
                                 <a href="">
-                                    <img class="card-img-top img-fluid" src="<?php echo site_url('web/'); ?>images/products/products-2.jpg" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="<?php //echo site_url('web/'); 
+                                                                                ?>images/products/products-2.jpg" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -304,13 +306,14 @@
 
                 </div>
                 <div class="col-sm-12 col-lg-4">
-                    <!-- product card -->
+                    
                     <div class="product-item bg-light">
                         <div class="card">
                             <div class="thumb-content">
-                                <!-- <div class="price">$200</div> -->
+                               
                                 <a href="">
-                                    <img class="card-img-top img-fluid" src="<?php echo site_url('web/'); ?>images/products/products-3.jpg" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="<?php //echo site_url('web/'); 
+                                                                                ?>images/products/products-3.jpg" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -345,7 +348,7 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
 
 
 
