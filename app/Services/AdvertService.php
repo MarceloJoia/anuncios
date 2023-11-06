@@ -275,6 +275,51 @@ class AdvertService
     }
 
 
+    public function tryRecoverAdvert(int $advertID)
+    {
+        try {
+            $advert = $this->getAdvertByID($advertID, withDeleted: true);
+            $advert->recover();
+            $this->trySaveAdvert($advert, protect: false);
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Error recovering data');
+        }
+    }
+
+
+    public function tryDeleteAdvert(int $advertID, bool $wantValidateAdvert = true)
+    {
+        try {
+            if ($wantValidateAdvert) {
+                $advert = $this->getAdvertByID($advertID, withDeleted: true);
+                $this->advertModel->tryDeleteAdvert($advert->id);
+                return true;
+            }
+
+            $this->advertModel->tryDeleteAdvert($advertID);
+            return true;
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Error deleting data');
+        }
+    }
+
+
+
+    public function tryArchiveAdvert(int $advertID)
+    {
+        try {
+            $advert = $this->getAdvertByID($advertID);
+            $this->advertModel->tryArchiveAdvert($advert->id);
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Error archiving data');
+        }
+    }
+
+
+
 
 
     ////////////////////////////////////////////////////////////////

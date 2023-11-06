@@ -247,4 +247,26 @@ class AdvertModel extends MyBaseModel
 
         return $this->db->table('adverts_images')->where($criteria)->delete();
     }
+
+
+
+    public function tryArchiveAdvert(int $advertID)
+    {
+        try {
+            $this->db->transStart();
+            // Quem está logado é o manager?
+            if (!$this->user->isSuperadmin()) {
+                // É o usuário anunciante.... então arquivamos apenas os anúncio dele
+                $this->where('user_id', $this->user->id)->delete($advertID);
+            } else {
+                // é o manager
+                $this->delete($advertID);
+            }
+            $this->db->transComplete();
+        } catch (\Exception $e) {
+
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Error saving data');
+        }
+    }
 }

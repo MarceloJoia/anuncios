@@ -52,8 +52,6 @@
 
 						<!-- Botões de ação -->
 						<div class="col-md-12">
-							<a class="btn btn-primary btn-sm mt-2 mb-4" href="<?php echo route_to('categories.archived'); ?>"><i class="bi bi-archive"></i>&nbsp;<?php echo lang('App.btn_all_archived'); ?></a>
-
 							<button type="button" id="createAdvertBtn" class="btn btn-main-sm add-button float-right mt-2 mb-4"><i class="bi bi-plus-square"></i>&nbsp;<?php echo lang('App.btn_new'); ?></button>
 						</div>
 
@@ -101,6 +99,7 @@
 <?php echo $this->include('Dashboard/Adverts/Scripts/_show_modal_to_create'); ?>
 <?php echo $this->include('Dashboard/Adverts/Scripts/_submit_modal_create_update'); ?>
 <?php echo $this->include('Dashboard/Adverts/Scripts/_viacep'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_archive_category'); ?>
 
 
 <script>

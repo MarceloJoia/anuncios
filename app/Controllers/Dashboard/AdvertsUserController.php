@@ -162,4 +162,24 @@ class AdvertsUserController extends BaseController
         return redirect()->back()->with('success', lang('App.success_deleted'));
     }
 
+    /**
+     * Aquiva anincios
+     *
+     * @return void
+     */
+    public function archiveUserAdvert()
+    {
+        $this->advertService->tryArchiveAdvert($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_archived')));
+    }
+
+    
+    public function recoverUserAdvert()
+    {
+        $this->advertService->tryRecoverAdvert($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_recovered')));
+    }
+
 }
