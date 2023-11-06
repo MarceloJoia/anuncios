@@ -117,19 +117,19 @@
 
                         <div class="col-md-9 mb-3">
                             <label for="street">Endereço</label>
-                            <input type="text" name="street" class="form-control">
+                            <input type="text" name="street" class="form-control" readonly>
                             <span class="text-danger error-text street"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="city">Cidade</label>
-                            <input type="text" name="city" class="form-control">
+                            <input type="text" name="city" class="form-control" readonly>
                             <span class="text-danger error-text city"></span>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="neighborhood">Bairro</label>
-                            <input type="text" name="neighborhood" class="form-control" placeholder="">
+                            <input type="text" name="neighborhood" class="form-control" placeholder="Bairro" readonly>
                             <span class="text-danger error-text neighborhood"></span>
                         </div>
 
@@ -141,7 +141,7 @@
 
                         <div class="col-md-2 mb-3">
                             <label for="state">Estado</label>
-                            <input type="text" name="state" class="form-control uf">
+                            <input type="text" name="state" class="form-control uf" readonly>
                             <span class="text-danger error-text state"></span>
                         </div>
 
@@ -189,8 +189,7 @@
 
 <?php //echo $this->include('Web/Home/Scripts/_submit_form_pay'); 
 ?>
-<?php //echo $this->include('Web/Home/Scripts/_viacep'); 
-?>
+<?php echo $this->include('Web/Home/Scripts/_viacep'); ?>
 
 
 <script>
@@ -205,8 +204,6 @@
         $("#btn-payment").addClass('btn-success');
 
     }
-
-
 
     function actionBtnCredit() {
 
@@ -225,18 +222,11 @@
         var payment_method = $(this).val();
 
         if (payment_method === 'billet') {
-
-
             actionBtnBillet();
-
-
         } else {
-
             // Cartão de crédito
-
             actionBtnCredit();
         }
-
     });
 </script>
 
@@ -249,17 +239,11 @@ Link para os scripts: https://dev.gerencianet.com.br/docs/pagamento-com-cartao#s
 -->
 <?php if (env('CI_ENVIRONMENT') === 'development') : ?>
 
-
-    <?php //echo $this->include('Web/Home/Scripts/_development');
-    ?>
-
+    <?php echo $this->include('Web/Home/Scripts/_development'); ?>
 
 <?php else : ?>
 
-
-    <?php //echo $this->include('Web/Home/Scripts/_production');
-    ?>
-
+    <?php echo $this->include('Web/Home/Scripts/_production'); ?>
 
 <?php endif ?>
 

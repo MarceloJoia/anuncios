@@ -457,6 +457,7 @@
                         ?>plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script> -->
 
 
+
     <script src="<?php echo site_url('web/'); ?>plugins/bootstrap/dist/js/popper.min.js"></script>
     <script src="<?php echo site_url('web/'); ?>plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?php echo site_url('web/'); ?>plugins/slick-carousel/slick/slick.min.js"></script>
@@ -466,12 +467,25 @@
     <script src="<?php echo site_url('web/'); ?>plugins/smoothscroll/SmoothScroll.min.js"></script>
     <script src="<?php echo site_url('web/'); ?>js/scripts.js"></script>
 
-
     <!-- toastr js -->
     <script src="<?php echo site_url('manager_assets/toastr/toastr.min.js'); ?>"></script>
 
+    <script src="<?php echo site_url('web/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
+
     <?php echo $this->renderSection('scripts'); ?>
 
+
+    <script>
+        $(document).ready(function() {
+            $('.btn-gn').on('click', function() {
+
+                $.LoadingOverlay("show", {
+                    background: "rgba(165, 190, 100, 0.5)"
+                });
+
+            });
+        });
+    </script>
 
 </body>
 
