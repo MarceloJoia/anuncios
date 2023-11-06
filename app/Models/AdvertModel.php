@@ -269,4 +269,23 @@ class AdvertModel extends MyBaseModel
             die('Error saving data');
         }
     }
+
+    public function tryDeleteAdvert(int $advertID)
+    {
+        try {
+            $this->db->transStart();
+            // Quem está logado é o manager?
+            if (!$this->user->isSuperadmin()) {
+                // É o usuário anunciante.... então recuperamos apenas os anúncios dele
+                $this->where('user_id', $this->user->id)->delete($advertID, true);
+            } else {
+                // É o manager...
+                $this->delete($advertID, true);
+            }
+            $this->db->transComplete();
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao deletar anuncio');
+        }
+    }
 }

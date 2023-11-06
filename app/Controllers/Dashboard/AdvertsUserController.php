@@ -205,4 +205,12 @@ class AdvertsUserController extends BaseController
 
         return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_recovered')));
     }
+
+    
+    public function deleteUserAdvert()
+    {
+        $this->advertService->tryDeleteAdvert($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_deleted')));
+    }
 }

@@ -88,6 +88,8 @@
 <!-- Fim Sweet Alert2 -->
 
 <?php echo $this->include('Dashboard/Adverts/Scripts/_datatable_all_archived'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_recover_advert'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_delete_advert'); ?>
 
 
 <script>
