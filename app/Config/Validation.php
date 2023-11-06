@@ -88,7 +88,7 @@ class Validation extends BaseConfig
 
 
 
-    
+
     //--------------------------------------------------------------------
     // Adverts
     //--------------------------------------------------------------------
@@ -134,22 +134,35 @@ class Validation extends BaseConfig
             'is_image[images]',
             'mime_in[images,image/jpg,image/jpeg,image/png,image/webp]',
             'max_size[images,2048]',
-            'max_dims[images,1920,1080]',//Tamanho maximo: 1920 Tamanho mínimo:1080
+            'max_dims[images,1920,1080]', //Tamanho maximo: 1920 Tamanho mínimo:1080
         ],
     ];
 
     // Podemos traduzir as mensagens de erro aqui!
-    public $advert_images_error = [
+    public $advert_images_error = [];
 
+
+    //--------------------------------------------------------------------
+    // User
+    //--------------------------------------------------------------------
+    public $user_profile = [
+        'id'                => 'permit_empty|is_natural_no_zero',
+        'name'              => 'required|min_length[2]|max_length[27]',
+        'last_name'         => 'required|min_length[2]|max_length[47]',
+        'email'             => 'required|valid_email|min_length[5]|max_length[240]|is_unique[users.email,id,{id}]',
+        // 'cpf'               => 'required|validate_cpf|is_unique[users.cpf,id,{id}]',
+        'cpf'               => 'required|is_unique[users.cpf,id,{id}]',
+        // 'phone'             => 'required|validate_phone|exact_length[15]|is_unique[users.phone,id,{id}]',
+        'phone'             => 'required|exact_length[15]|is_unique[users.phone,id,{id}]',
+        'birth'             => 'required',
     ];
 
+    public $user_profile_errors = [];
 
+    // public $access_update = [
+    //     'password'              => 'required|min_length[8]',
+    //     'password_confirmation' => 'matches[password]',
+    // ];
 
-
-
-
-
-
-
-
+    // public $access_update_errors = [];
 }
