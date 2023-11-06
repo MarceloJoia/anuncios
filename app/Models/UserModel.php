@@ -39,6 +39,13 @@ class UserModel extends Model implements UserProviderInterface
         'password',
         'email_verified_at',
         'remember_token',
+        // Campos da gerencianet
+        'name',
+        'last_name',
+        'cpf',
+        'birth',
+        'phone',
+        'display_phone',
     ];
 
     /**

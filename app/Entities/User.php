@@ -40,6 +40,7 @@ class User extends Entity implements
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'display_phone' => 'boolean',
     ];
 
     /**
