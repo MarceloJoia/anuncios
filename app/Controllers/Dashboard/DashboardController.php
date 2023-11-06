@@ -44,19 +44,14 @@ class DashboardController extends BaseController
 
     public function updateProfile()
     {
-
-        
         $this->userRequest->validateBeforeSave('user_profile', respondWithRedirect: true);
-        
-        // $this->userService->tryUpdateProfile($this->removeSpoofingFromRequest());
-        dd($this->removeSpoofingFromRequest());
-        
-        // if (session()->has('choice')) {
 
-        //     return redirect()->to(session('choice'));
-        // }
+        $this->userService->tryUpdateProfile($this->removeSpoofingFromRequest());
 
+        if (session()->has('choice')) {
+            return redirect()->to(session('choice'));
+        }
 
-        // return redirect()->back()->with('success', lang('App.success_saved'));
+        return redirect()->back()->with('success', lang('App.success_saved'));
     }
 }

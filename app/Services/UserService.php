@@ -34,30 +34,29 @@ class UserService
     }
 
 
-    // public function tryUpdateProfile(array $request)
-    // {
+    public function tryUpdateProfile(array $request)
+    {
+        try {
+            $request = (object) $request;
 
-    //     try {
+            $this->user->name               =     $request->name;
+            $this->user->last_name          =     $request->last_name;
+            $this->user->cpf                =     $request->cpf;
+            $this->user->email              =     $request->email;
+            $this->user->phone              =     $request->phone;
+            $this->user->birth              =     $request->birth;
+            $this->user->display_phone      =     $request->display_phone;
 
-    //         $request = (object) $request;
+            if ($this->user->hasChanged()) {
+                $this->userModel->save($this->user);
+            }
+        } catch (\Exception $e) {
 
-    //         $this->user->name               =     $request->name;
-    //         $this->user->last_name          =     $request->last_name;
-    //         $this->user->cpf                =     $request->cpf;
-    //         $this->user->email              =     $request->email;
-    //         $this->user->phone              =     $request->phone;
-    //         $this->user->birth              =     $request->birth;
-    //         $this->user->display_phone      =     $request->display_phone;
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
 
-    //         if ($this->user->hasChanged()) {
-
-    //             $this->userModel->save($this->user);
-    //         }
-    //     } catch (\Exception $e) {
-
-    //         die('Não foi possível atualizar o perfil');
-    //     }
-    // }
+            die('Não foi possível atualizar o perfil');
+        }
+    }
 
 
     // public function currentPasswordIsValid(string $currentPassword): bool
