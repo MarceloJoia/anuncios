@@ -45,6 +45,25 @@ class Filters extends BaseConfig
             AuthFilter::class,
             SuperadminFilter::class,
         ],
+
+        'auth_verified' => [
+            AuthFilter::class,
+            \Fluent\Auth\Filters\EmailVerifiedFilter::class,
+        ],
+
+
+        // 'subscription' => [
+        //     AuthFilter::class,
+        //     HasSubscriptionFilter::class,
+        //     PaymentFilter::class,
+        // ],
+
+
+        // 'adverts' => [
+        //     AuthFilter::class, // verificamos se está logado
+        //     AdvertFilter::class,
+        // ],
+
     ];
 
     /**

@@ -15,7 +15,7 @@ class HomeController extends BaseController
     private $gerencianetRequest;
     private $gerencianetService;
     private $advertService;
-    
+
     public function __construct()
     {
         $this->planService          = Factories::class(PlanService::class);
@@ -47,6 +47,31 @@ class HomeController extends BaseController
         ];
 
         return view('Web/Home/pricing', $data);
+    }
+
+
+
+    public function choice(int $planID = null)
+    {
+        // if ($this->gerencianetService->userHasSubscription()) {
+        //     return redirect()->route('dashboard')->with('info', 'Você já possui uma Assinatura. Aproveite para cancelá-la e adquirir o novo Plano.');
+        // }
+
+
+        // if (!$this->userService->userDataIsComplete()) {
+        //     // usaremos para redirecionar após o user atualizar o perfil. Esse trecho é para o caso de o user ter logado antes de tentar comprar o Plano
+        //     session()->set('choice', current_url());
+        //     return redirect()->route('profile')->with('info', service('auth')->user()->flashMessageToUser());
+        // }
+
+        $plan = $this->planService->getChoosenPlan($planID);
+
+        $data = [
+            'title' => "Realizar o pagamento do Plano {$plan->name}",
+            'plan'  => $plan
+        ];
+
+        return view('Web/Home/choice', $data);
     }
 
 

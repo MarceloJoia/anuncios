@@ -27,14 +27,14 @@ class VerifyEmailController extends BaseController
         }
 
         // Check if hash equal with current user email.
-        if (! hash_equals($hash, sha1(auth()->user()->email))) {
+        if (!hash_equals($hash, sha1(auth()->user()->email))) {
             return redirect()->route('verification.notice')->with('error', lang('Passwords.token'));
         }
 
         $signature = hash_hmac('sha256', auth()->user()->email, config('Encryption')->key);
 
         // Check signature key
-        if (! hash_equals($signature, $this->request->getVar('signature'))) {
+        if (!hash_equals($signature, $this->request->getVar('signature'))) {
             return redirect()->route('verification.notice')->with('error', lang('Passwords.token'));
         }
 
@@ -46,6 +46,12 @@ class VerifyEmailController extends BaseController
         auth()->user()->markEmailAsVerified();
 
         Events::trigger('fireVerifiedUser', auth()->user());
+
+        // O usuário estava tentando comprar um plano?
+        if (session()->has('choice')) {
+            // Sim... então redirecionamos ele para a mesma rota de compra
+            return redirect()->to(session('choice'));
+        }
 
         return redirect()->to(session('intended') ?? config('Auth')->home);
     }

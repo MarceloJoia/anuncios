@@ -86,11 +86,12 @@ class AuthenticatedSessionController extends BaseController
             return redirect()->route('manager')->with('success', lang('App.messages.welcome', ['name' => Auth::user()->name ?? Auth::user()->username]));
         }
 
-        // // O usuário estava tentando comprar um plano?
-        // if (session()->has('choice')) {
-        //     // Sim... então redirecionamos ele para a mesma rota de compra
-        //     return redirect()->to(session('choice'));
-        // }
+
+        // O usuário estava tentando comprar um plano?
+        if (session()->has('choice')) {
+            // Sim... então redirecionamos ele para a mesma rota de compra
+            return redirect()->to(session('choice'));
+        }
 
         // // Estava tentando perguntar?
         // if (session()->has('details')) {

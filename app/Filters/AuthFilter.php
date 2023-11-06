@@ -60,12 +60,11 @@ class AuthFilter extends AuthenticationFilter implements FilterInterface
             }
         }
 
-        // // Usaremos para redirecionar o user para a página de compra após user logar,
-        // // e caso necessário, após o user verificar o seu e-mail
-        // if (url_is('choice*')) {
-
-        //     session()->set('choice', current_url());
-        // }
+        // Usaremos para redirecionar o user para a página de compra após user logar,
+        // e caso necessário, após o user verificar o seu e-mail
+        if (url_is('choice*')) {
+            session()->set('choice', current_url());
+        }
 
         // // Foi clicado no botão 'Perguntar' e estava logado?
         // if (url_is('toask*')) {

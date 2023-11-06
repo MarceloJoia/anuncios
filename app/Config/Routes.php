@@ -35,7 +35,7 @@ $routes->get('image/(:any)/(:any)', 'DetailsController::image/$1/$2', ['as' => '
 // $routes->get('category-city/(:any)/(:any)', 'HomeController::categoryCity/$1/$2', ['as' => 'adverts.category.city']);
 $routes->get('pricing', 'HomeController::pricing', ['as' => 'pricing']);
 
-// $routes->get('choice/(:num)', 'HomeController::choice/$1', ['as' => 'choice', 'filter' => 'auth_verified']);
+$routes->get('choice/(:num)', 'HomeController::choice/$1', ['as' => 'choice', 'filter' => 'auth_verified']);
 
 // $routes->post('pay/(:num)', 'HomeController::attemptPay/$1', ['as' => 'pay']);
 
