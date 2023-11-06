@@ -34,6 +34,14 @@ class AdvertsUserController extends BaseController
     }
 
 
+    public function archived()
+    {
+        return view('Dashboard/Adverts/archived');
+    }
+
+
+
+
     public function getUserAdverts()
     {
         if (!$this->request->isAJAX()) {
@@ -42,6 +50,22 @@ class AdvertsUserController extends BaseController
 
         $response = [
             'data' => $this->advertService->getAllAdverts(classBtnActions: 'btn btn-sm btn-outline-primary'),
+        ];
+
+        return $this->response->setJSON($response);
+    }
+
+
+
+
+    public function getUserArchivedAdverts()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        $response = [
+            'data' => $this->advertService->getArchivedAdverts(classBtnActions: 'btn btn-sm btn-outline-info'),
         ];
 
         return $this->response->setJSON($response);
@@ -174,12 +198,11 @@ class AdvertsUserController extends BaseController
         return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_archived')));
     }
 
-    
+
     public function recoverUserAdvert()
     {
         $this->advertService->tryRecoverAdvert($this->request->getGetPost('id'));
 
         return $this->response->setJSON($this->advertRequest->respondWithMessage(message: lang('App.success_recovered')));
     }
-
 }

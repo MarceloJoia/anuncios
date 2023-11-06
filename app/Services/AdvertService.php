@@ -46,7 +46,6 @@ class AdvertService
 
             // É para exibir o botão?
             if ($showBtnArchive) {
-
                 // Sim...
                 $btnArchive = form_button(
                     [
@@ -80,7 +79,6 @@ class AdvertService
 
             // O botão é para ser exibido e o anúncio está publicado?
             if ($showBtnViewAdvert && $advert->is_published) {
-
                 // Sim... podemos montar o botão (ação)
                 $routeToViewAdvert = route_to('adverts.detail', $advert->code);
 
@@ -162,6 +160,83 @@ class AdvertService
                 'actions'      => $btnActions,
             ];
         }
+
+        return $data;
+    }
+
+
+    public function getArchivedAdverts(
+        bool $showBtnRecover = true,
+        string $classBtnActions = '',
+        string $classBtnRecover = '',
+        string $classBtnDelete = '',
+    ): array {
+
+        $adverts = $this->advertModel->getAllAdverts(onlyDeleted: true);
+
+        $data = [];
+
+        $btnRecover = '';
+
+        foreach ($adverts as $advert) {
+            // É para exibir o botão?
+            if ($showBtnRecover) {
+                $btnRecover = form_button(
+                    [
+                        'data-id' => $advert->id,
+                        'id'      => 'btnRecoverAdvert', // ID do html element
+                        'class'   => 'dropdown-item'
+                    ],
+                    '<i class="bi bi-recycle"></i>&nbsp;'  . lang('App.btn_recover')
+                );
+            }
+
+
+            $btnDelete = form_button(
+                [
+                    'data-id' => $advert->id,
+                    'id'      => 'btnDeleteAdvert', // ID do html element
+                    'class'   => 'dropdown-item'
+                ],
+                '<i class="bi bi-trash3"></i>&nbsp;'  . lang('App.btn_delete')
+            );
+
+            // Começamos a montar o botão de ações do dropdown
+
+
+            $btnActions = '<div class="dropdown dropup">'; // Abertura da div do dropdown
+
+
+            $attrBtnActions = [
+                'type'              => 'button',
+                'id'                => 'actions',
+                'class'             => "dropdown-toggle {$classBtnActions}",
+                'data-bs-toggle'    => "dropdown", // Para BS5
+                'data-toggle'       => "dropdown", // Para BS4
+                'aria-haspopup'     => "true",
+                'aria-expanded'     => "false",
+            ];
+
+            $btnActions .= form_button($attrBtnActions, lang('App.btn_actions'));
+
+
+            $btnActions .= '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'; // abertura da div do dropdown menu
+
+            // Criamos as opções de botões (ações)
+            $btnActions .= $btnRecover;
+            $btnActions .= $btnDelete;
+
+            $btnActions .= '</div>'; // Fechamento da div do dropdown-menu
+
+            $btnActions .= '</div>'; // Fechamento da div do dropdown
+
+            $data[] = [
+                'title'                 => $advert->title,
+                'code'                  => $advert->code,
+                'actions'               => $btnActions,
+            ];
+        }
+
 
         return $data;
     }

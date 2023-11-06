@@ -52,21 +52,15 @@
 
 						<!-- Botões de ação -->
 						<div class="col-md-12">
-							<a href="<?php echo route_to('my.archived.adverts'); ?>" class="btn btn-primary btn-sm mt-2 mb-4"><i class="bi bi-archive"></i>&nbsp;<?php echo lang('App.btn_all_archived'); ?></a>
-
-							<button type="button" id="createAdvertBtn" class="btn btn-main-sm add-button float-right mt-2 mb-4"><i class="bi bi-plus-square"></i>&nbsp;<?php echo lang('App.btn_new'); ?></button>
+							<a href="<?php echo route_to('my.adverts'); ?>" class="btn btn-sm btn-success float-right mb-4"><i class="bi bi-arrow-left-square"></i>&nbsp;<?php echo lang('App.btn_back'); ?></a>
 						</div>
 
 						<div class="col-12">
 							<table class="table table-borderless table-striped" id="dataTable">
 								<thead>
 									<tr>
-										<th scope="col"><?php echo lang('Adverts.label_image'); ?></th>
 										<th scope="col" class="all"><?php echo lang('Adverts.label_title'); ?></th>
 										<th scope="col" class="none"><?php echo lang('Adverts.label_code'); ?></th>
-										<th scope="col" class="none text-center"><?php echo lang('Adverts.label_category'); ?></th>
-										<th scope="col"><?php echo lang('Adverts.label_status'); ?></th>
-										<th scope="col" class="none"><?php echo lang('Adverts.label_address'); ?></th>
 										<th scope="col" class="all text-center"><?php echo lang('App.btn_actions'); ?></th>
 									</tr>
 								</thead>
@@ -81,9 +75,6 @@
 	<!-- Container End -->
 </section>
 
-<!-- Model Adverts -->
-<?php echo $this->include('Dashboard/Adverts/_modal_advert'); ?>
-
 <?= $this->endSection() ?>
 
 
@@ -92,16 +83,11 @@
 <!-- Data Table -->
 <script src="https://cdn.datatables.net/v/bs4/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
-<!-- Mascaras -->
-<script src="<?php echo site_url('manager_assets/mask/app.js'); ?>"></script>
-<script src="<?php echo site_url('manager_assets/mask/jquery.mask.min.js'); ?>"></script>
+<!-- Sweet Alert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Fim Sweet Alert2 -->
 
-<?php echo $this->include('Dashboard/Adverts/Scripts/_datatable_all'); ?>
-<?php echo $this->include('Dashboard/Adverts/Scripts/_get_my_advert'); ?>
-<?php echo $this->include('Dashboard/Adverts/Scripts/_show_modal_to_create'); ?>
-<?php echo $this->include('Dashboard/Adverts/Scripts/_submit_modal_create_update'); ?>
-<?php echo $this->include('Dashboard/Adverts/Scripts/_viacep'); ?>
-<?php echo $this->include('Dashboard/Adverts/Scripts/_archive_category'); ?>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_datatable_all_archived'); ?>
 
 
 <script>
