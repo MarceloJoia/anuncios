@@ -56,7 +56,9 @@
 
                     <h4 class="mb-3">Escolha a Forma de pagamento</h4>
 
-                    <div id="error_gn"></div>
+                    <div id="error_gn">
+
+                    </div>
 
                     <div class="my-3 ml-3">
                         <div class="form-check">
@@ -163,7 +165,7 @@
 
                     <hr class="mb-4">
 
-                    <input type="submit" id="btn-payment" style="cursor: pointer;" class="btn btn-primary btn-lg btn-block btn-gn-payment" value="Finalizar com Cartão">
+                    <input type="submit" id="btn-payment" style="cursor: pointer;" class="btn btn-primary btn-lg btn-block btn-gn btn-gn-payment" value="Finalizar com Cartão">
 
                     <?php echo form_close(); ?>
                 </div>

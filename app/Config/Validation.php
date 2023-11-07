@@ -7,6 +7,7 @@ use CodeIgniter\Validation\StrictRules\CreditCardRules;
 use CodeIgniter\Validation\StrictRules\FileRules;
 use CodeIgniter\Validation\StrictRules\FormatRules;
 use CodeIgniter\Validation\StrictRules\Rules;
+use App\Validations\Customized; //=> Nossas validações
 
 class Validation extends BaseConfig
 {
@@ -25,6 +26,7 @@ class Validation extends BaseConfig
         FormatRules::class,
         FileRules::class,
         CreditCardRules::class,
+        Customized::class, //=> Nossas validações
     ];
 
     /**
@@ -142,27 +144,19 @@ class Validation extends BaseConfig
     public $advert_images_error = [];
 
 
+
     //--------------------------------------------------------------------
     // User
     //--------------------------------------------------------------------
     public $user_profile = [
         'id'                => 'permit_empty|is_natural_no_zero',
-        'name'              => 'required|min_length[2]|max_length[27]',
+        'name'              => 'required|min_length[2]|max_length[47]',
         'last_name'         => 'required|min_length[2]|max_length[47]',
         'email'             => 'required|valid_email|min_length[5]|max_length[240]|is_unique[users.email,id,{id}]',
-        // 'cpf'               => 'required|validate_cpf|is_unique[users.cpf,id,{id}]',
-        'cpf'               => 'required|is_unique[users.cpf,id,{id}]',
-        // 'phone'             => 'required|validate_phone|exact_length[15]|is_unique[users.phone,id,{id}]',
-        'phone'             => 'required|exact_length[15]|is_unique[users.phone,id,{id}]',
+        'cpf'               => 'required|validate_cpf|is_unique[users.cpf,id,{id}]',
+        'phone'             => 'required|validate_phone|exact_length[15]|is_unique[users.phone,id,{id}]',
         'birth'             => 'required',
     ];
 
     public $user_profile_errors = [];
-
-    // public $access_update = [
-    //     'password'              => 'required|min_length[8]',
-    //     'password_confirmation' => 'matches[password]',
-    // ];
-
-    // public $access_update_errors = [];
 }

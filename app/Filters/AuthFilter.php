@@ -60,18 +60,15 @@ class AuthFilter extends AuthenticationFilter implements FilterInterface
             }
         }
 
+        // d(url_is('choice*'));
+        // dd(current_url());
+
         // Usaremos para redirecionar o user para a página de compra após user logar,
         // e caso necessário, após o user verificar o seu e-mail
         if (url_is('choice*')) {
             session()->set('choice', current_url());
         }
 
-        // // Foi clicado no botão 'Perguntar' e estava logado?
-        // if (url_is('toask*')) {
-
-        //     session()->set('details', previous_url()); // aqui é previous_url
-        //     session()->set('ask', $request->getPost('ask')); // setamos na sessão a pergunta para podermos colocá-la novamente no input do form depois de logar
-        // }
 
         return $this->unauthenticated($request, $guards);
     }
@@ -85,21 +82,6 @@ class AuthFilter extends AuthenticationFilter implements FilterInterface
         if ($request->isAJAX()) {
             return $this->fail('Unauthenticated.', ResponseInterface::HTTP_UNAUTHORIZED);
         }
-
-        // if (url_is('api/adverts*')) {
-
-        //     return $this->fail('Unauthenticated.', ResponseInterface::HTTP_UNAUTHORIZED);
-        // }
-
-        // if (url_is('api/dashboard*')) {
-
-        //     return $this->fail('Unauthenticated.', ResponseInterface::HTTP_UNAUTHORIZED);
-        // }
-
-        // if (in_array('api', $guards)) {
-
-        //     return $this->fail('Unauthenticated.', ResponseInterface::HTTP_UNAUTHORIZED);
-        // }
 
         return redirect()->route('login');
     }

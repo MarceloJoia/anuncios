@@ -9,7 +9,7 @@
             <!-- User Name -->
             <h5 class="text-center">Samanta Doe</h5>
             <p>Joined February 06, 2017</p>
-            <a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
+            <a href="<?= route_to('profile'); ?>" class="btn btn-main-sm"><i class="bi bi-person-bounding-box"></i>&nbsp;<?= lang('App.sidebar.manager.profile'); ?></a>
         </div>
         <!-- Dashboard Links -->
         <div class="widget user-dashboard-menu">
@@ -18,7 +18,7 @@
                 <li class="<?php echo url_is("{$locale}/dashboard") ? 'active' : ''; ?>">
                     <a href="<?php echo route_to('dashboard'); ?>"><i class="fa fa-home"></i> <?php echo lang('App.sidebar.dashboard.dashboard'); ?></a>
                 </li>
-                
+
                 <li class="<?php echo url_is("{$locale}/dashboard/adverts/my") ? 'active' : ''; ?>">
                     <a class="btn-gn" href="<?php echo route_to('my.adverts'); ?>"><i class="fa fa-user"></i> <?php echo lang('App.sidebar.dashboard.my_adverts'); ?></a>
                 </li>

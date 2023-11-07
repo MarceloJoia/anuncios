@@ -4,7 +4,6 @@ namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
 use App\Requests\UserRequest;
-use App\Services\GerencianetService;
 use App\Services\UserService;
 use CodeIgniter\Config\Factories;
 
@@ -13,14 +12,13 @@ class DashboardController extends BaseController
     private $user;
     private $userRequest;
     private $userService;
-    private $gerencianetService;
+
 
     public function __construct()
     {
         $this->user                 = service('auth')->user();
         $this->userRequest          = Factories::class(UserRequest::class);
         $this->userService          = Factories::class(UserService::class);
-        $this->gerencianetService   = Factories::class(GerencianetService::class);
     }
 
 
@@ -44,7 +42,10 @@ class DashboardController extends BaseController
 
     public function updateProfile()
     {
+
         $this->userRequest->validateBeforeSave('user_profile', respondWithRedirect: true);
+
+        // dd($this->removeSpoofingFromRequest());
 
         $this->userService->tryUpdateProfile($this->removeSpoofingFromRequest());
 

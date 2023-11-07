@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\UserModel;
 use CodeIgniter\Config\Factories;
-use Fluent\Auth\Facades\Hash;
+
 
 class UserService
 {
@@ -47,6 +47,8 @@ class UserService
             $this->user->birth              =     $request->birth;
             $this->user->display_phone      =     $request->display_phone;
 
+            // dd($this->user);
+
             if ($this->user->hasChanged()) {
                 $this->userModel->save($this->user);
             }
@@ -58,67 +60,4 @@ class UserService
         }
     }
 
-
-    // public function currentPasswordIsValid(string $currentPassword): bool
-    // {
-    //     return Hash::check($currentPassword, $this->user->password);
-    // }
-
-
-    // public function tryUpdateAccess(string $newPassword)
-    // {
-
-    //     try {
-
-    //         $this->user->password = $newPassword;
-
-    //         if ($this->user->hasChanged()) {
-
-    //             $this->userModel->save($this->user);
-    //         }
-    //     } catch (\Exception $e) {
-
-    //         die('Não foi possível atualizar o seu acesso');
-    //     }
-    // }
-
-
-    // public function deleteUserAccount()
-    // {
-
-    //     try {
-
-    //         $gerencianetService = Factories::class(GerencianetService::class);
-
-    //         // User tem assinatura?
-    //         if ($gerencianetService->userHasSubscription()) {
-
-    //             /// Sim... então removemos na gerencianet também
-    //             $gerencianetService->cancelSubscription();
-    //         }
-
-    //         // Removemos da nossa base
-    //         $this->userModel->deleteUserAccount();
-
-    //         // Destruímos a sessão
-    //         service('auth')->logout();
-    //     } catch (\Exception $e) {
-
-    //         die('Não foi possível atualizar o seu acesso');
-    //     }
-    // }
-
-
-    // public function getUserByCriteria(array $criteria = [])
-    // {
-
-    //     $user = $this->userModel->getUserByCriteria($criteria);
-
-    //     if (is_null($user)) {
-
-    //         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('User Not Found');
-    //     }
-
-    //     return $user;
-    // }
 }

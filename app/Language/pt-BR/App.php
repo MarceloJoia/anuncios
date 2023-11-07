@@ -32,10 +32,11 @@ return [
 
     'sidebar' => [
         'manager' => [
-            'home'              => 'Principal',
-            'categories'        => 'Categorias',
-            'plans'             => 'Planos',
-            'adverts'           => 'Anúncios',
+            'home'          => 'Principal',
+            'categories'    => 'Categorias',
+            'plans'         => 'Planos',
+            'adverts'       => 'Anúncios',
+            'profile'       => 'Editar Perfil',
 
         ],
         'dashboard' => [

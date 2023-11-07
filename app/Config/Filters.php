@@ -53,18 +53,6 @@ class Filters extends BaseConfig
         ],
 
 
-        // 'subscription' => [
-        //     AuthFilter::class,
-        //     HasSubscriptionFilter::class,
-        //     PaymentFilter::class,
-        // ],
-
-
-        // 'adverts' => [
-        //     AuthFilter::class, // verificamos se está logado
-        //     AdvertFilter::class,
-        // ],
-
     ];
 
     /**

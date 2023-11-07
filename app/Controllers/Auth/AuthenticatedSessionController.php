@@ -93,14 +93,6 @@ class AuthenticatedSessionController extends BaseController
             return redirect()->to(session('choice'));
         }
 
-        // // Estava tentando perguntar?
-        // if (session()->has('details')) {
-        //     // Sim... então redirecionamos ele para a mesma rota de pergunta
-        //     $redirectTo = session('details');
-        //     session()->remove('details');
-        //     return redirect()->to($redirectTo);
-        // }
-
 
 
         // Finnaly we're success login.
